@@ -1,0 +1,107 @@
+/* CTA */
+
+.header-cta {
+  display: flex;
+  margin: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  max-width: 1200px;
+}
+
+.image-element {
+  width: clamp(550px, 150%, 950px); /* Adjust the minimum, preferred, and maximum values as needed */
+  height: auto;
+}
+
+.element-1 {
+  display: flex;
+  background-color: white;
+  width: 50%;
+  outline: 2px solid black;
+}
+
+.element-2 {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  width: 50%;
+  outline: 2px solid black;
+}
+
+.element-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 275px;
+  max-width: 375px;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 1rem;
+}
+
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+
+.cta-btn {
+  color: white;
+  font-family: 'Anonymous Pro', monospace;
+  background-color: var(--dark-col);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 150px;
+  height: 40px;
+  transition: transform 0.1s ease-in-out;
+}
+
+.cta-btn:hover {
+  transform: scale(1.05);
+} 
+
+.p-elem {
+  font-family: 'Anonymous Pro', monospace;
+  max-width: 350px;
+  min-width: 250px;
+  padding: 1rem;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+@media (max-width: 40rem) {
+
+  /* CTA */
+  .header-cta {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .image-element {
+    overflow: hidden;
+  }
+
+  .element-1 {
+    width: 100%;
+  }
+
+  .element-2 {
+    width: 100%;
+  }
+
+  .element-main {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+}

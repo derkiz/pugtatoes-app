@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Poppins:wght@300;400&display=swap');
 
 :root {
-  --secondary-col: #323232;
+  --secondary-col: #4b4b4b;
   --footer-col: rgb(173, 173, 173);
   --dark-col: #020912;
 }
@@ -39,7 +39,7 @@
 }
 
 .menu-item:hover {
-  color: var(black);
+  color: black;
 }
 
 
@@ -58,18 +58,22 @@
 }
 
 .nav {
+  padding: 2rem;
+  background-color: white;
+}
+
+.nav-container {
   display: flex;
   margin: auto;
   justify-content: left;
   max-width: 1200px;
-  padding: 2rem;
 }
 
-.nav a {
+.nav-container a {
   display: flex;
 }
 
-.nav ul {
+.nav-container ul {
   font-family: 'Anonymous Pro', monospace;
   display: flex;
   list-style: none;
@@ -98,16 +102,14 @@
   }
 
   .nav {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 1rem;
+    padding: 1rem;
   }
-  
-  .nav ul {
+
+  .nav-container ul {
     display: none;
   }
   
-  .nav {
+  .nav-container {
     justify-content: space-between;
   }
 

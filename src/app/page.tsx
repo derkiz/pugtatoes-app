@@ -1,7 +1,9 @@
+import { Cta } from "@/components"
+
 const page = () => {
   return (
     <>
-    <h1>Hello World</h1>
+      <Cta />
     </>
   )
 }
