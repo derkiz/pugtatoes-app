@@ -24,7 +24,7 @@ const Footer = () => {
         </div>
         <div className="mobile-menu-icon-3">
           <div className="footer-image-holder">
-            <img src="static/pugtatoes-logo.svg"></img>
+            <img src="/static/pugtatoes-logo.svg"></img>
           </div>
         </div>
       </div>
@@ -34,19 +34,19 @@ const Footer = () => {
           <div className="insert-email">
             <p>Email</p>
             <div className="email-icon">
-              <img src="static/arrow-right.svg" alt="arrow-right svg"></img>
+              <img src="/static/arrow-right.svg" alt="arrow-right svg"></img>
             </div>
           </div>
         </div>
         <div className="socials">
           <div className="social-item">
-            <img className="footer-icon" src="static/instagram.svg" alt="Instagram Icon"></img>
+            <img className="footer-icon" src="/static/instagram.svg" alt="Instagram Icon"></img>
           </div>
           <div className="social-item">
-            <img className="footer-icon-2" src="static/x.svg" alt="Instagram Icon"></img>
+            <img className="footer-icon-2" src="/static/x.svg" alt="Instagram Icon"></img>
           </div>
           <div className="social-item">
-            <img className="footer-icon" src="static/tiktok.svg" alt="Instagram Icon"></img>
+            <img className="footer-icon" src="/static/tiktok.svg" alt="Instagram Icon"></img>
           </div>
         </div>
       </div>
