@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const about = () => {
   return (
-    <div>about</div>
+    <div>About</div>
   )
 }
 

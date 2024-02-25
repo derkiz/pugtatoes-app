@@ -10,12 +10,12 @@ const Footer = () => {
         <div className="footer-column">
           <div className="footer-title">Quick Links</div>
             <ul>
-              <li>Catalogue</li>
-              <li>About</li>
-              <li>Contact</li>
-              <li>Privacy Policy</li>
-              <li>Refund Policy</li>
-              <li>Terms and Conditions</li>
+              <Link href="/collections" style={{ textDecoration: "none", color: "inherit" }}><li>Collections</li></Link>
+              <Link href="/pages/about" style={{ textDecoration: "none", color: "inherit" }}><li>About</li></Link>
+              <Link href="/pages/contact" style={{ textDecoration: "none", color: "inherit" }}><li>Contact</li></Link>
+              <Link href="/pages/customer-support" style={{ textDecoration: "none", color: "inherit" }}><li>Customer Support</li></Link>
+              <Link href="/pages/privacy-policy" style={{ textDecoration: "none", color: "inherit" }}><li>Privacy Policy</li></Link>
+              <Link href="/pages/terms-and-conditions" style={{ textDecoration: "none", color: "inherit" }}><li>Terms and Conditions</li></Link>
             </ul>
           </div>
         <div className="footer-column">

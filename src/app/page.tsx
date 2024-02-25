@@ -1,9 +1,10 @@
-import { Cta } from "@/components"
+import { Cta, Latest } from "@/components"
 
 const page = () => {
   return (
     <>
       <Cta />
+      <Latest />
     </>
   )
 }

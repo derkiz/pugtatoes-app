@@ -9,7 +9,7 @@
 }
 
 .image-element {
-  width: clamp(550px, 150%, 950px); /* Adjust the minimum, preferred, and maximum values as needed */
+  width: clamp(550px, 150%, 950px);
   height: auto;
 }
 
@@ -85,6 +85,7 @@ button {
     align-items: center;
     padding-left: 1rem;
     padding-right: 1rem;
+    padding-bottom: 1rem;
   }
 
   .image-element {

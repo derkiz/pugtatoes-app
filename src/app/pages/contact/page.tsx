@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const contact = () => {
   return (
-    <div>contact</div>
+    <div>Contact</div>
   )
 }
 
