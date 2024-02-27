@@ -17,7 +17,7 @@
   display: flex;
   background-color: white;
   width: 50%;
-  outline: 2px solid black;
+  border: 2px solid black;
 }
 
 .element-2 {
@@ -25,7 +25,7 @@
   justify-content: center;
   background-color: white;
   width: 50%;
-  outline: 2px solid black;
+  border: 2px solid black;
 }
 
 .element-main {
@@ -77,7 +77,7 @@ button {
   box-shadow: none;
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 43rem) {
 
   /* CTA */
   .header-cta {

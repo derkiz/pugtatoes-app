@@ -88,7 +88,7 @@
   padding-right: 2rem;
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 43rem) {
   /* NAV */
   .mobile-menu-icon {
     display: flex;
