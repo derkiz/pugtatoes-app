@@ -4,6 +4,8 @@ import { createClient } from 'contentful';
 
 const newProducts = async () => {
   try {
+    console.log('Hello, World!');
+
     const client = createClient({
       space: process.env.contentful_space_id,
       accessToken: process.env.contentful_access_key,
@@ -36,6 +38,7 @@ const newProducts = async () => {
     console.error('Error fetching data:', error);
     return [];
   }
+
 };
 
 export default newProducts;
