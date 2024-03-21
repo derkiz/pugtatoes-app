@@ -1,30 +1,17 @@
-.parent {
+.latest-parent {
   display: flex;
   justify-content: center;
-  margin: 2rem;
+  padding: 2rem;
 }
 
-.best-sellers {
+.latest-child {
   max-width: 1200px;
   width: 100%;
-  border: 1px solid red;
-}
-
-.product-card {
-  width: 200px;
-  height: 300px;
-  border: 1px solid green;
-}
-
-h2 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.5rem;
-  font-weight: 400;
-  padding-bottom: 3rem;
+  border: 1px solid black;
 }
 
 @media (max-width: 43rem) {
-  .parent {
-    margin: 1rem;
+  .latest-parent {
+    padding: 1rem;
   }
 }
