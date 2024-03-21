@@ -1,9 +1,9 @@
 import React from 'react'
 
-const new = () => {
+const latest = () => {
   return (
     <div>new</div>
   )
 }
 
-export default new
+export default latest
