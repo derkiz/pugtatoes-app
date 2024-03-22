@@ -2,18 +2,18 @@ import React from 'react'
 import styles from './Cta.module.css'
 
 const Cta = () => {
-  return (
-  <div className={styles.header-cta}>
-    <div className="element-1">
-      <img className="image-element" src="static/mug-header.png"></img>
+  return ( 
+  <div className={styles.header_cta}>
+    <div className={styles.element_1}>
+      <img className={styles.image_element} src="static/mug-header.png"></img>
     </div>
-    <div className="element-2">
-      <div className="element-main">
-        <h1>Take a sip</h1>
-        <div className="p-elem">A great gift, a cute collectible, a chubby pug, a silly companion. See our latest festive designs! :-)</div>
-        <button className="cta-btn">
+    <div className={styles.element_2}>
+      <div className={styles.element_main}>
+        <div className={styles.title}>Take a sip</div>
+        <div className={styles.p_elem}>A great gift, a cute collectible, a chubby pug, a silly companion. See our latest festive designs! :-)</div>
+        <div className={styles.cta_btn}>
           Pick out a mug!
-        </button>
+        </div>
       </div>
     </div>
   </div>
