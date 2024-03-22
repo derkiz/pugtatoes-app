@@ -1,3 +1,5 @@
+// src/app/components/index.tsx
+
 import Navbar from './Navbar'
 import Footer from './Footer'
 import Cta from './Cta'

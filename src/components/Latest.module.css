@@ -1,4 +1,6 @@
-.latest-parent {
+/* src/app/components/Latest.module.css */
+
+.flex-container {
   display: flex;
   justify-content: center;
   padding: 2rem;

@@ -1,6 +1,6 @@
-import { Navbar } from "@/components"
-import { Footer } from "@/components"
-import { Metadata } from "next"
+import { Navbar, Footer } from "@/components";
+import { Metadata } from "next";
+import './globals.css';
 
 export const metadata: Metadata = {
   title: {

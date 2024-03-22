@@ -1,9 +1,9 @@
 import React from 'react'
-import './cta.css'
+import styles from './Cta.module.css'
 
 const Cta = () => {
   return (
-  <div className="header-cta">
+  <div className={styles.header-cta}>
     <div className="element-1">
       <img className="image-element" src="static/mug-header.png"></img>
     </div>
