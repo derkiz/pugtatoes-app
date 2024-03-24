@@ -9,24 +9,21 @@ const latest = async () => {
     const { data } = await response.json();
 
     return (
-      <>
-        hi
-      </>
-      // <div className={styles.flex-container}>
-      //   <div className={styles.latest-child}>
-      //     <h>Entries</h>
-      //       <ul>
-      //         {data.map(product => (
-      //           <li key={product.id}>
-      //             <strong>Title:</strong> {product.attributes.title}, <strong>Price:</strong> {product.attributes.price}
-      //             <br />
-      //             <div>{process.env.STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}</div>
-      //             <img src={process.env.STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}/>
-      //           </li>
-      //         ))}
-      //       </ul>
-      //   </div>
-      // </div>
+      <div className={styles.flex_container}>
+        <div className={styles.latest_child}>
+          <div className={styles.title}>Entries</div>
+            <ul>
+              {data.map(product => (
+                <li key={product.id}>
+                  <strong>Title:</strong> {product.attributes.title}, <strong>Price:</strong> {product.attributes.price}
+                  <br />
+                  <div>{process.env.STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}</div>
+                  <img src={process.env.STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}/>
+                </li>
+              ))}
+            </ul>
+        </div>
+      </div>
     );
   } catch (error) {
     console.error('Error fetching data:', error);

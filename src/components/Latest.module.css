@@ -1,19 +1,22 @@
-/* src/app/components/Latest.module.css */
-
-.flex-container {
+.flex_container {
   display: flex;
   justify-content: center;
   padding: 2rem;
 }
 
-.latest-child {
+.latest_child {
   max-width: 1200px;
   width: 100%;
   border: 1px solid black;
 }
 
+.title {
+  font-size: 5rem;
+  font-style: italic;
+}
+
 @media (max-width: 43rem) {
-  .latest-parent {
+  .latest_parent {
     padding: 1rem;
   }
 }
