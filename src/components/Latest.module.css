@@ -15,6 +15,11 @@
   font-style: italic;
 }
 
+.card {
+  border: 1px solid red;
+  width: 50%;
+}
+
 @media (max-width: 43rem) {
   .latest_parent {
     padding: 1rem;
