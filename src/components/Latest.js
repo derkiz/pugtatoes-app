@@ -1,5 +1,7 @@
 // src/app/components/Latest.js
 
+{/* debugging... to show url: <div>{process.env.STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}</div> */}
+
 import React from 'react'
 import styles from './Latest.module.css'
 
@@ -9,19 +11,16 @@ const latest = async () => {
     const { data } = await response.json();
 
     return (
-      <div className={styles.flex_container}>
-        <div className={styles.latest_child}>
-          <div className={styles.title}>Entries</div>
-            <div>
-              {data.map(product => (
-                <div className={styles.card} key={product.id}>
-                  <strong>Title:</strong> {product.attributes.title}, <strong>Price:</strong> {product.attributes.price}
-                  <br />
-                  <div>{process.env.STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}</div>
-                  <img src={process.env.STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}/>
-                </div>
-              ))}
-            </div>
+      <div className={styles.flex_padding}>
+        <div className={styles.container}>
+          <div className={styles.card_container}>
+            {data.map(product => (
+              <div className={styles.card} key={product.id}>
+                <img src={process.env.STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}/>
+                <strong>Title:</strong> {product.attributes.title}, <strong>Price:</strong> {product.attributes.price}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
