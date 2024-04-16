@@ -13,6 +13,7 @@ const latest = async () => {
     return (
       <div className={styles.flex_padding}>
         <div className={styles.container}>
+          <div className={styles.title}>Meet our bestsellers</div>
           <div className={styles.card_container}>
             {data.map(product => (
               <div className={styles.card} key={product.id}>
