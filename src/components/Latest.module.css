@@ -10,30 +10,54 @@
 }
 
 .card_container {
+  /* outline: 1px solid black; */
   display: flex;
   justify-content: space-between;
   gap: 1rem;
   max-width: 1200px;
-  height: 200px;
-  border: 2px solid red;
 }
 
 .card {
-  border: 1px solid black;
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: calc(25% - 1rem); /* Adjust width based on number of cards and gap */
 }
 
 .card img {
   width: 100%; /* Ensure the image fills its container */
+  overflow: hidden; /* Hide the overflow */
   height: auto; /* Maintain aspect ratio */
   max-width: 100%; /* Prevent image overflow */
+  transition: transform .25s ease;
+}
+
+.card img:hover {
+  transform: scale(1.05);
 }
 
 .title {
-  size: 1rem;
+  font-size: 1rem;
 }
 
-@media (max-width: 43rem) {
+.chead {
+  font-family: 'Poppins', monospace;
+  font-size: 1rem;
+  font-weight: normal;
+  padding: 1rem;
+}
+
+.cdesc {
+  font-family: 'Anonymous Pro', monospace;
+  font-size: 1rem;
+  color: var(--secondary-col);
+  padding-bottom: 1.5rem;
+}
+
+
+@media (max-width: 44rem) {
   .card_container {
     flex-wrap: wrap;
     height: auto;
@@ -48,3 +72,4 @@
   }
 
 }
+

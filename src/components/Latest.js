@@ -17,7 +17,8 @@ const latest = async () => {
             {data.map(product => (
               <div className={styles.card} key={product.id}>
                 <img src={process.env.STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}/>
-                <strong>Title:</strong> {product.attributes.title}, <strong>Price:</strong> {product.attributes.price}
+                <div className={styles.chead}>{product.attributes.title}</div>
+                <div className={styles.cdesc}>€{product.attributes.price}</div>
               </div>
             ))}
           </div>

@@ -21,8 +21,9 @@ const Navbar = () => {
             <Link href="/pages/about" style={{ textDecoration: "none", color: "inherit" }}><li className={styles.menu_item}>About</li></Link>
           </ul>
           <div className={styles.mobile_menu_icon_2}>
-            <img className={styles.search_svg} src="/static/search.svg" alt="menu icon"></img>
-            <img className={styles.cart_svg} src="/static/cart.svg" alt="menu icon"></img>
+            <img className={styles.nav_icon_2} src="/static/account.svg" alt="menu icon"></img>
+            <img className={styles.nav_icon} src="/static/search.svg" alt="menu icon"></img>
+            <img className={styles.nav_icon} src="/static/cart.svg" alt="menu icon"></img>
           </div>
         </div>
       </div>
