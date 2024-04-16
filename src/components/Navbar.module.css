@@ -98,6 +98,10 @@
     display: none;
   }
   
+  .nav_icon_2 {
+    display: none;
+  }
+
   .nav_container {
     justify-content: space-between;
   }
