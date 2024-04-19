@@ -38,6 +38,10 @@
   transition: transform .25s ease;
 }
 
+.card:hover .chead {
+  text-decoration: underline;
+}
+
 .card img:hover {
   transform: scale(1.05);
 }
