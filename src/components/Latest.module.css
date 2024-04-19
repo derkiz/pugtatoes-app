@@ -23,6 +23,8 @@
 
 .card {
   /* border: 1px solid red; */
+  text-decoration: none;
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;

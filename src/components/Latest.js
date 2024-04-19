@@ -4,6 +4,7 @@
 
 import React from 'react'
 import styles from './Latest.module.css'
+import Link from 'next/link';
 
 const latest = async () => {
   try {
@@ -16,11 +17,11 @@ const latest = async () => {
           <div className={styles.title}>Meet our bestsellers</div>
           <div className={styles.card_container}>
             {data.map(product => (
-              <div className={styles.card} key={product.id}>
+              <Link className={styles.card} href={`/products/${product.attributes.slug}`} key={product.id}>
                 <img src={process.env.STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}/>
                 <div className={styles.chead}>{product.attributes.title}</div>
                 <div className={styles.cdesc}>€{product.attributes.price}</div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
