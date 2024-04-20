@@ -21,7 +21,13 @@ const ProductDetails = async ({ params }: Props) => {
 
     if (!slugs.includes(params.id)) {
       console.log(`ID "${params.id}" not found in slugs array`); // Log a message
-      notFound();
+      return (
+        <>
+        "{params.id}" Not found in slugs array
+        <br />
+        Slugs array: {JSON.stringify(slugs)}
+        </>
+      )
     }
 
     return (
