@@ -7,43 +7,39 @@ type Props = {
   };
 };
 
-const ProductDetails = async ({ params }: Props) => {
-  try {
-    const response = await fetch("http://localhost:1337/api/products");
-    const { data } = await response.json();
-    const slugs = data.map((product: { attributes: { slug: any } }) => product.attributes.slug);
-      
-    return (
-      <div>
-        Product Details: {params.id}
-        <br />
-        type of params id: {typeof(params.id)}
-        <br />
-        Slugs array: {JSON.stringify(slugs)}
-        <br />
-        type of slug i0 {typeof(slugs[0])}
-        <br />
-
-        {!slugs.includes(params.id) ? (
-          <>notFound()</>
-          ) : (
-           <>In</>
-          )}
-
-      </div>
-    );
-    
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
-};
-
 export const generateMetadata = ({ params }: Props): Metadata => {
   return {
     title: `Product ${params.id}`,
   };
 };
 
-export default function ProductPage({ params }: Props) {
-  return <ProductDetails params={params} />;
-}
+const getProductDetails = async (): Promise<string[]> => {
+  try {
+    const response = await fetch("http://localhost:1337/api/products");
+    const { data } = await response.json();
+    const slugs = data.map((product: { attributes: { slug: any } }) => product.attributes.slug);
+    return slugs;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return []; // Return an empty array in case of error
+  }
+};
+
+const ProductDetails = async ({ params }: Props) => {
+  const slugs = await getProductDetails(); // Await the result of getProductDetails
+
+  // Render the component once the slugs array is fetched
+  return (
+    <div>
+      Product Details: {params.id}
+      <br />
+      {!slugs.includes(params.id) ? (
+        notFound()
+      ) : (
+        <>In</>
+      )}
+    </div>
+  );
+};
+
+export default ProductDetails;
