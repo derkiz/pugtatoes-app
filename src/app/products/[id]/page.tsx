@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { Product } from "@/components"
 import { notFound } from "next/navigation";
 
 type Props = {
@@ -27,19 +28,15 @@ const getProductDetails = async (): Promise<string[]> => {
 
 const ProductDetails = async ({ params }: Props) => {
   const slugs = await getProductDetails(); // Await the result of getProductDetails
-
-  // Render the component once the slugs array is fetched
-  return (
-    <div>
-      Product Details: {params.id}
-      <br />
-      {/* {!slugs.includes(params.id) ? (
-        notFound()
-      ) : (
-        <>In</>
-      )} */}
-    </div>
-  );
+  if (!slugs.includes(params.id)) {
+    notFound()
+  } else {
+    return (
+      <div>
+        <Product />
+      </div>
+    )
+  }
 };
 
 export default ProductDetails;
