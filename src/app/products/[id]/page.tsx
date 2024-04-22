@@ -33,11 +33,11 @@ const ProductDetails = async ({ params }: Props) => {
     <div>
       Product Details: {params.id}
       <br />
-      {!slugs.includes(params.id) ? (
+      {/* {!slugs.includes(params.id) ? (
         notFound()
       ) : (
         <>In</>
-      )}
+      )} */}
     </div>
   );
 };
