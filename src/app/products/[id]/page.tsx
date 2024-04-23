@@ -1,6 +1,5 @@
 import { Metadata } from "next";
-import { Product } from "@/components"
-import { notFound } from "next/navigation";
+import { Product } from "@/components";
 
 type Props = {
   params: {
@@ -14,29 +13,13 @@ export const generateMetadata = ({ params }: Props): Metadata => {
   };
 };
 
-const getProductDetails = async (): Promise<string[]> => {
-  try {
-    const response = await fetch("http://localhost:1337/api/products");
-    const { data } = await response.json();
-    const slugs = data.map((product: { attributes: { slug: any } }) => product.attributes.slug);
-    return slugs;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return []; // Return an empty array in case of error
-  }
-};
-
-const ProductDetails = async ({ params }: Props) => {
-  const slugs = await getProductDetails(); // Await the result of getProductDetails
-  if (!slugs.includes(params.id)) {
-    notFound()
-  } else {
-    return (
-      <div>
-        <Product />
-      </div>
-    )
-  }
+const ProductDetails = ({ params }: Props) => {
+  const paramId = params.id;
+  return (
+    <>
+      <Product paramId={paramId} />
+    </>
+  );
 };
 
 export default ProductDetails;
