@@ -19,7 +19,7 @@ const getProductDetails = async (): Promise<string[]> => {
     return slugs;
   } catch (error) {
     console.error("Error fetching data:", error);
-    return []; // Return an empty array in case of error
+    throw error; // Rethrow the error to be handled by the caller
   }
 };
 
@@ -30,23 +30,33 @@ type ProductProps = {
 
 const Product: React.FC<ProductProps> = ({ paramId }) => {
   const [slugs, setSlugs] = useState<string[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
-      const slugs = await getProductDetails();
-      setSlugs(slugs);
+      try {
+        const slugs = await getProductDetails();
+        setSlugs(slugs);
+      } catch (error) {
+        // Handle the error, e.g., display an error message
+      } finally {
+        setLoading(false); // Set loading to false regardless of success or failure
+      }
     };
     fetchData();
   }, []);
 
+  if (loading) {
+    return null; // Display a loading indicator
+  }
+
+  if (slugs.length === 0 || !slugs.includes(paramId)) {
+    return <>{notFound()}</>; // Display the notFound message if slugs are empty or paramId is not found
+  }
+
   return (
     <div>
-      <h2>Product Details</h2>
-      {slugs.length > 0 && !slugs.includes(paramId) ? (
-        <>{notFound()}</>
-      ) : (
-        <>In</>
-      )}
+      <>In: {slugs.length}</>
     </div>
   );
 };
