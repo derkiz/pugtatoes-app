@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useEffect, useState } from 'react';
 import styles from './Product.module.css';
 import Link from 'next/link';
@@ -8,56 +9,76 @@ interface ProductData {
   id: number;
   attributes: {
     slug: string;
+    title: string;
+    price: number;
+    image: {
+      data: {
+        attributes: any;
+        url: string;
+      }[];
+    };
   };
 }
 
-const getProductDetails = async (): Promise<string[]> => {
+interface ProductProps {
+  paramId: string;
+  STRAPI_APP_BASE_URL: string;
+}
+
+const getProductDetails = async (): Promise<ProductData[]> => {
   try {
-    const response = await fetch("http://localhost:1337/api/products");
+    const response = await fetch("http://localhost:1337/api/products?populate=image");
     const { data } = await response.json();
-    const slugs = data.map((product: ProductData) => product.attributes.slug);
-    return slugs;
+    return data;
   } catch (error) {
     console.error("Error fetching data:", error);
-    throw error; // Rethrow the error to be handled by the caller
+    throw error;
   }
 };
 
-// Define the prop types
-type ProductProps = {
-  paramId: string; // Declare paramId prop
-};
-
-const Product: React.FC<ProductProps> = ({ paramId }) => {
-  const [slugs, setSlugs] = useState<string[]>([]);
+const Product: React.FC<ProductProps> = ({ paramId, STRAPI_APP_BASE_URL }) => {
+  const [product, setProduct] = useState<ProductData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const slugs = await getProductDetails();
-        setSlugs(slugs);
+        const products = await getProductDetails();
+        const product = products.find(p => p.attributes.slug === paramId);
+        if (product) {
+          setProduct(product);
+        } else {
+          setProduct(null);
+        }
       } catch (error) {
         // Handle the error, e.g., display an error message
       } finally {
-        setLoading(false); // Set loading to false regardless of success or failure
+        setLoading(false);
       }
     };
     fetchData();
-  }, []);
+  }, [paramId]);
 
   if (loading) {
-    return null; // Display nothing while loading,
+    return null;
   }
 
-  if (slugs.length === 0 || !slugs.includes(paramId)) {
-    return <>{notFound()}</>; // Display the notFound message if slugs are empty or paramId is not found
+  if (!product) {
+    return <>{notFound()}</>;
   }
 
   return (
-    <div>
-      <>In: {slugs.length}</>
-    </div>
+    <>
+      <div>
+        Product slug: {paramId}
+        <br />
+        Product title: {product.attributes.title}
+        <br />
+        Product img url: {STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}
+        <br />
+        Product Price: {product.attributes.price}
+      </div>
+    </>
   );
 };
 
