@@ -47,7 +47,7 @@ const Product: React.FC<ProductProps> = ({ paramId }) => {
   }, []);
 
   if (loading) {
-    return null; // Display a loading indicator
+    return null; // Display nothing while loading,
   }
 
   if (slugs.length === 0 || !slugs.includes(paramId)) {
