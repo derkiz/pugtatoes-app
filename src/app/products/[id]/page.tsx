@@ -9,8 +9,10 @@ type Props = {
 };
 
 export const generateMetadata = ({ params }: Props): Metadata => {
+  const { id } = params;
+  const slug = id.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
   return {
-    title: `Product ${params.id}`,
+    title: `Product ${slug}`,
   };
 };
 
