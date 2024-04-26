@@ -69,14 +69,19 @@ const Product: React.FC<ProductProps> = ({ paramId, STRAPI_APP_BASE_URL }) => {
 
   return (
     <>
-      <div>
-        Product slug: {paramId}
-        <br />
-        Product title: {product.attributes.title}
-        <br />
-        Product img url: {STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}
-        <br />
-        Product Price: {product.attributes.price}
+      <div className={styles.flex_container}>
+        <div className={styles.product_container}>
+          <div className={styles.product}>img</div>
+          <div className={styles.product_details}>
+            Product slug: {paramId}
+            <br />
+            Product title: {product.attributes.title}
+            <br />
+            Product img url: {STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}
+            <br />
+            Product Price: {product.attributes.price}
+          </div>
+        </div>
       </div>
     </>
   );
