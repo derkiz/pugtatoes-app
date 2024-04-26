@@ -10,7 +10,7 @@ const Navbar = () => {
           <div className={styles.mobile_menu_icon}>
             <img className={styles.list_svg} src="/static/list.svg" alt="menu icon"></img>
           </div>
-          <a href="/"><img className={styles.logo} src="/static/pugtatoes-logo.svg"></img></a>
+          <Link href='/'><img className={styles.logo} src="/static/pugtatoes-logo.svg" alt="Pugtatoes" loading="eager"></img></Link>
           <ul>
             <Link href="/collections/new" style={{ textDecoration: "none", color: "inherit" }}><li className={styles.menu_item}>New</li></Link>
             <li style={{ userSelect: "none", pointerEvents: "none" }}>|</li>
