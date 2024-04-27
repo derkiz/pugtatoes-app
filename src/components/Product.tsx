@@ -71,15 +71,22 @@ const Product: React.FC<ProductProps> = ({ paramId, STRAPI_APP_BASE_URL }) => {
     <>
       <div className={styles.flex_container}>
         <div className={styles.product_container}>
-          <div className={styles.product}>img</div>
+          <div className={styles.product}>
+            <img src={STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}></img>
+          </div>
           <div className={styles.product_details}>
-            Product slug: {paramId}
-            <br />
-            Product title: {product.attributes.title}
-            <br />
-            Product img url: {STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}
-            <br />
-            Product Price: {product.attributes.price}
+            <div className={styles.title}>{product.attributes.title}</div>
+            <div className={styles.desc_price}>€{product.attributes.price}</div>
+            <div className={styles.desc}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              Sed do eiusmod tempor incididunt ut labore et dolore 
+              magna aliqua. Ut enim ad minim veniam, quis nostrud 
+              exercitation ullamco laboris nisi ut aliquip ex ea 
+              commodo consequat.
+              </div>
+            <div className={styles.add_to_cart}>Add to cart</div>
+            <div className={styles.buy_now}>Buy now</div>
+            <div className={styles.share}>Share</div>
           </div>
         </div>
       </div>
