@@ -39,6 +39,7 @@ const getProductDetails = async (): Promise<ProductData[]> => {
 const Product: React.FC<ProductProps> = ({ paramId, STRAPI_APP_BASE_URL }) => {
   const [product, setProduct] = useState<ProductData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const [quantity, setQuantity] = useState<number>(1); // State to store quantity
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,6 +59,16 @@ const Product: React.FC<ProductProps> = ({ paramId, STRAPI_APP_BASE_URL }) => {
     };
     fetchData();
   }, [paramId]);
+
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const incrementQuantity = () => {
+    setQuantity(quantity + 1);
+  };
 
   if (loading) {
     return null;
@@ -83,19 +94,21 @@ const Product: React.FC<ProductProps> = ({ paramId, STRAPI_APP_BASE_URL }) => {
               magna aliqua. Ut enim ad minim veniam, quis nostrud 
               exercitation ullamco laboris nisi ut aliquip ex ea 
               commodo consequat.
-              </div>
+            </div>
             <div className={styles.miscdesc}>Quantity</div>
             <div className={styles.amount}>
-              <img src='/static/dash.svg'></img>
-              <div className={styles.value}>1</div>
-              <img src='/static/plus.svg'></img>
+              <img src='/static/dash.svg' onClick={decrementQuantity}></img>
+              <div className={styles.valpar}>
+                <div className={styles.value}>{quantity}</div>
+              </div>
+              <img src='/static/plus.svg' onClick={incrementQuantity}></img>
             </div>
             <div className={styles.add_to_cart}>Add to cart</div>
             <div className={styles.buy_now}>Buy now</div>
             <div className={styles.share}>
               <img src='/static/upload.svg' alt='share.svg'></img>
               <div className={styles.miscdesc}>Share</div>
-              </div>
+            </div>
           </div>
         </div>
       </div>
