@@ -3,10 +3,10 @@
 {/* debugging... to show url: <div>{process.env.STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}</div> */}
 
 import React from 'react'
-import styles from './Latest.module.css'
+import styles from './Bestsellers.module.css'
 import Link from 'next/link';
 
-const latest = async () => {
+const Bestsellers = async () => {
   try {
     const response = await fetch('http://localhost:1337/api/products?populate=image');
     const { data } = await response.json();
@@ -33,4 +33,4 @@ const latest = async () => {
   }
 };
 
-export default latest;
+export default Bestsellers;

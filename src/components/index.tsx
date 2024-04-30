@@ -3,13 +3,13 @@
 import Navbar from './Navbar'
 import Footer from './Footer'
 import Cta from './Cta'
-import Latest from './Latest'
+import Bestsellers from './Bestsellers'
 import Product from './Product'
 
 export {
   Navbar,
   Footer,
   Cta,
-  Latest,
+  Bestsellers,
   Product
 }
