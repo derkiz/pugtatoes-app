@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Poppins:wght@300;400&display=swap');
 
-/* NAV  */
-
 .nav_icon {
   width: 1.25rem;
   transition: transform 0.1s ease-in-out;
@@ -12,10 +10,7 @@
   transition: transform 0.1s ease-in-out;
 }
 
-.nav_icon:hover {
-  transform: scale(1.05);
-}
-
+.nav_icon:hover,
 .nav_icon_2:hover {
   transform: scale(1.05);
 }
@@ -29,7 +24,6 @@
 .menu_item:hover {
   color: black;
 }
-
 
 .mobile_menu_icon {
   display: none;
@@ -60,14 +54,19 @@
 
 .nav_container a {
   display: flex;
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit color from parent */
+}
+
+.nav_container a:hover {
+  color: black; /* Change color on hover */
 }
 
 .nav_container ul {
   font-family: 'Anonymous Pro', monospace;
   display: flex;
   list-style: none;
-  margin-top: auto;
-  margin-bottom: auto;
+  align-items: center;
   gap: 1rem;
   color: var(--secondary-col);
 }
@@ -77,8 +76,26 @@
   padding-right: 2rem;
 }
 
+.chevron {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chevron img {
+  width: 0.6rem;
+  height: 0.6rem;
+  padding-right: 0.25rem;
+  padding-left: 0.25rem;
+}
+
+/* Styling for <li> elements */
+.nav_container li {
+  user-select: none;
+  pointer-events: none;
+}
+
 @media (max-width: 44rem) {
-  /* NAV */
   .mobile_menu_icon {
     display: flex;
     margin-top: auto;
