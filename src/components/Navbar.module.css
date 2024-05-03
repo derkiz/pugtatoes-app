@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Poppins:wght@300;400&display=swap');
 
+.menu_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu_container:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .nav_icon {
   width: 1.25rem;
   transition: transform 0.1s ease-in-out;
@@ -12,17 +23,7 @@
 
 .nav_icon:hover,
 .nav_icon_2:hover {
-  transform: scale(1.05);
-}
-
-.menu_item {
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer; 
-}
-
-.menu_item:hover {
-  color: black;
+  transform: scale(1.1);
 }
 
 .mobile_menu_icon {
@@ -54,12 +55,12 @@
 
 .nav_container a {
   display: flex;
-  text-decoration: none; /* Remove underline */
-  color: inherit; /* Inherit color from parent */
+  text-decoration: none;
+  color: inherit;
 }
 
 .nav_container a:hover {
-  color: black; /* Change color on hover */
+  text-decoration: underline;
 }
 
 .nav_container ul {
@@ -68,7 +69,7 @@
   list-style: none;
   align-items: center;
   gap: 1rem;
-  color: var(--secondary-col);
+  color: black;
 }
 
 .logo {
@@ -87,12 +88,6 @@
   height: 0.6rem;
   padding-right: 0.25rem;
   padding-left: 0.25rem;
-}
-
-/* Styling for <li> elements */
-.nav_container li {
-  user-select: none;
-  pointer-events: none;
 }
 
 @media (max-width: 44rem) {
@@ -135,4 +130,52 @@
   .list_svg:hover {
     transform: scale(1.1);
   }
+}
+
+/* Dropdown styles */
+.menu_item_2 {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.menu_item_2:focus .drop_down {
+  display: block;
+  animation: dropdownAnimation 0.25s ease forwards;
+}
+
+.drop_down {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  transition: all 0.3s ease;
+  outline: 2px solid black;
+}
+
+@keyframes dropdownAnimation {
+  from {
+    opacity: .5;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(8px);
+  }
+}
+
+.drop_down ul {
+  display: flex;
+  align-items: flex-start;
+  padding: 2rem;
+  flex-direction: column;
+  list-style-type: none;
+}
+
+.drop_down ul li {
+  cursor: pointer;
+}
+
+.drop_down ul li:hover {
+  background-color: #ddd;
 }

@@ -22,19 +22,27 @@ const Navbar = () => {
               <li className={styles.menu_item}>Shop All</li>
             </Link>
             <li>|</li>
-            <Link href="/collections">
-              <li className={styles.menu_item}>Collections</li>
+            <div className={styles.menu_container}>
+              <li className={styles.menu_item_2}>Collections</li>
               <div className={styles.chevron}>
                 <img src='/static/chevron-down.svg' alt="chevron down" />
               </div>
-            </Link>
+            </div>
             <li>|</li>
-            <Link href="/pages/about">
-              <li className={styles.menu_item}>About</li>
+            <div className={styles.menu_container}>
+              <div className={styles.menu_item_2} tabIndex={0}>About
+                <div className={styles.drop_down}>
+                  <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                  </ul>
+                </div>
+              </div>
               <div className={styles.chevron}>
                 <img src='/static/chevron-down.svg' alt="chevron down" />
               </div>
-            </Link>
+            </div>
           </ul>
           <div className={styles.mobile_menu_icon_2}>
             <img className={styles.nav_icon_2} src="/static/account.svg" alt="menu icon" />
