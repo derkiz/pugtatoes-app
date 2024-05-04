@@ -10,7 +10,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  max-width: 1200px;
+  max-width: 1400px;
 }
 
 .card_container {
@@ -72,7 +72,7 @@
 }
 
 
-@media (max-width: 44rem) {
+@media (max-width: 47rem) {
   .card_container {
     flex-wrap: wrap;
     height: auto;

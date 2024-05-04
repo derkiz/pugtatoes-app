@@ -7,7 +7,7 @@
 }
 
 .product_container {
-  max-width: 1200px;
+  max-width: 1400px;
   display: flex;
   justify-content: space-between;
   flex-grow: 1;
@@ -122,6 +122,6 @@
   padding-right: .5rem;
 }
 
-@media (max-width: 44rem) {
+@media (max-width: 47rem) {
 
 }

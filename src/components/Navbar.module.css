@@ -50,7 +50,7 @@
   display: flex;
   margin: auto;
   justify-content: left;
-  max-width: 1200px;
+  max-width: 1400px;
 }
 
 .nav_container a {
@@ -90,7 +90,7 @@
   padding-left: 0.25rem;
 }
 
-@media (max-width: 44rem) {
+@media (max-width: 47rem) {
   .mobile_menu_icon {
     display: flex;
     margin-top: auto;
