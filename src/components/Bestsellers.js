@@ -9,7 +9,7 @@ const Bestsellers = async () => {
     const response = await fetch('http://localhost:1337/api/products?populate=image');
     const { data } = await response.json();
     // Filter bestsellers from data
-    const bestsellers = data.filter(product => product.attributes.collection === 'bestsellers');
+    const bestsellers = data.filter(product => product.attributes.isBestSeller);
     return (
       <div className={styles.flex_padding}>
         <div className={styles.container}>

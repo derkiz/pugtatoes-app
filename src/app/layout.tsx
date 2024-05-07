@@ -1,3 +1,5 @@
+// layout.tsx
+
 import { Navbar, Footer } from "@/components";
 import { Metadata } from "next";
 import './globals.css';
