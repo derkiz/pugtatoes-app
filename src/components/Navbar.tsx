@@ -10,6 +10,7 @@ const Navbar = () => {
   const [dropdown2Visible, setDropdown2Visible] = useState(false);
   const [collections, setCollections] = useState<string[]>([]);
 
+  // Acquire filtered collections data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -25,6 +26,7 @@ const Navbar = () => {
     fetchData();
   }, []);
 
+  // Dropdown functionality
   function toggleDropdown1() {
     setDropdown1Visible(!dropdown1Visible);
     setDropdown2Visible(false); // Close other dropdown when opening this one
