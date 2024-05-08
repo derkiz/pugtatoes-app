@@ -81,9 +81,14 @@ const Navbar = () => {
                   <img src='/static/chevron-down.svg' alt="chevron down" />
                 </button>
                 <div className={styles.dropdown_content} style={{ display: dropdown1Visible ? 'block' : 'none' }}>
-                  {collections.map((collection, index) => (
-                    <a key={index} href="#">{collection}</a>
-                  ))}
+                  {collections.map((collection, index) => {
+                  const slug = collection.toLowerCase().replace(/\s+/g, '-');
+                  return (
+                    <Link key={index} href={`/collections/${slug}`}>
+                      {collection}
+                    </Link>
+                    );
+                  })}
                 </div>
               </div>
             </div>
