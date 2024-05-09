@@ -96,12 +96,12 @@ const Navbar = () => {
             <div className={styles.menu_container}>
               <div className={styles.dropdown} id="myDropdown2">
                 <button onClick={toggleDropdown2}>
-                  Dropdown 2
+                  About
                   <img src='/static/chevron-down.svg' alt="chevron down" />
                 </button>
                 <div className={styles.dropdown_content} style={{ display: dropdown2Visible ? 'block' : 'none' }}>
-                  <a href="#">Option 1</a>
-                  <a href="#">Option 2</a>
+                  <a href="#">Our Story</a>
+                  <a href="#">Contact Us</a>
                 </div>
               </div>
             </div>
