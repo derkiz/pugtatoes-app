@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Cards } from "@/components";
 
 export default function CollectionDetails({
@@ -10,10 +10,10 @@ export default function CollectionDetails({
 }) {
   const { collectionId } = params;
   const STRAPI_APP_BASE_URL = process.env.STRAPI_APP_BASE_URL || 'failed';
-
+  const title = collectionId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
   return (
     <>
-      Collection ID: {collectionId}, STRAPI_APP_BASE_URL: {STRAPI_APP_BASE_URL}
+      <Cards collectionId={title} STRAPI_APP_BASE_URL={STRAPI_APP_BASE_URL} />
     </>
   );
 }
