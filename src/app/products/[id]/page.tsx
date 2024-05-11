@@ -1,3 +1,5 @@
+//[id]/page.tsx
+
 import { Metadata } from "next";
 import { Product } from "@/components";
 
@@ -18,7 +20,7 @@ export const generateMetadata = ({ params }: Props): Metadata => {
 
 const ProductDetails = ({ params }: Props) => {
   const paramId = params.id;
-  const STRAPI_APP_BASE_URL = process.env.STRAPI_APP_BASE_URL || '';
+  const STRAPI_APP_BASE_URL = process.env.STRAPI_APP_BASE_URL || 'failed';
   return (
     <>
       <Product paramId={paramId} STRAPI_APP_BASE_URL={STRAPI_APP_BASE_URL} />
