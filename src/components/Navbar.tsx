@@ -107,7 +107,7 @@ const Navbar = () => {
             </div>
           </ul>
           <div className={styles.mobile_menu_icon_2}>
-            <img className={styles.nav_icon_2} src="/static/account.svg" alt="menu icon" />
+            {/* <img className={styles.nav_icon_2} src="/static/account.svg" alt="menu icon" /> */}
             <img className={styles.nav_icon} src="/static/search.svg" alt="menu icon" />
             <img className={styles.nav_icon} src="/static/cart.svg" alt="menu icon" />
           </div>
