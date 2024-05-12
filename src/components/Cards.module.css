@@ -30,7 +30,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: calc(25% - 1rem); /* Adjust width based on number of cards and gap */
+  width: 23%;
 }
 
 .card img {
