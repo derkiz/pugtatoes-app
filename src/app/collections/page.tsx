@@ -1,5 +1,4 @@
 import React from 'react'
-// import { All } from '@/components'
 import Link from 'next/link'
 import { All } from '@/components'
 
