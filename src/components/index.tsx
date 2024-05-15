@@ -6,6 +6,7 @@ import Cta from './Cta'
 import Bestsellers from './Bestsellers'
 import Product from './Product'
 import Cards from './Cards'
+import All from './All'
 
 export {
   Navbar,
@@ -13,5 +14,6 @@ export {
   Cta,
   Bestsellers,
   Product,
-  Cards
+  Cards,
+  All
 }
