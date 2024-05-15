@@ -66,10 +66,6 @@ const Navbar = () => {
             <img className={styles.logo} src="/static/pugtatoes-logo.svg" alt="Pugtatoes" loading="eager" />
           </Link>
           <ul>
-            <Link href="/collections/new">
-              <li className={styles.menu_item}>New</li>
-            </Link>
-            <li>|</li>
             <Link href="/collections">
               <li className={styles.menu_item}>Shop All</li>
             </Link>
