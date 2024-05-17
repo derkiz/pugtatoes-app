@@ -1,7 +1,7 @@
 // components/Cards.js
 
 import React from 'react';
-import styles from './Cards.module.css';
+import styles from './Bestsellers.module.css';
 import Link from 'next/link';
 
 const Cards = async ({ collectionId, STRAPI_APP_BASE_URL }) => {
@@ -17,7 +17,9 @@ const Cards = async ({ collectionId, STRAPI_APP_BASE_URL }) => {
           <div className={styles.card_container}>
             {filteredData.map(product => (
               <Link className={styles.card} href={`/products/${product.attributes.slug}`} key={product.id}>
-                <img src={STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url} alt={product.attributes.title}/>
+                <div className={styles.card_image}>
+                  <img src={STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url} alt={product.attributes.title}/>
+                </div>
                 <div className={styles.chead}>{product.attributes.title}</div>
                 <div className={styles.cdesc}>€{product.attributes.price}</div>
               </Link>
