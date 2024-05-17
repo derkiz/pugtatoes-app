@@ -29,10 +29,12 @@ const All = async ({STRAPI_APP_BASE_URL}) => {
               <div className={styles.card_container}>
                 {collections[collection].map(product => (
                   <Link className={styles.card} href={`/products/${product.attributes.slug}`} key={product.id}>
+                    <div className={styles.card_image}>
                     <img 
                       src={STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url} 
                       alt={product.attributes.title} 
                     />
+                    </div>
                     <div className={styles.chead}>{product.attributes.title}</div>
                     <div className={styles.cdesc}>€{product.attributes.price}</div>
                   </Link>
