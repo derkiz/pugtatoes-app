@@ -31,7 +31,6 @@
 }
 
 .mobile_menu_icon_2 {
-  /* border: 1px solid red; */
   display: flex;
   justify-content: flex-end;
   margin-top: auto;
@@ -160,7 +159,7 @@
   border: 2px solid black;
   z-index: 1;
   padding: 1rem 0.5rem;
-  top: 30px; /* Adjust the top position */
+  top: 30px;
 }
 
 .dropdown_content a {
