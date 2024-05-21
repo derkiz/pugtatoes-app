@@ -82,9 +82,9 @@ const All = ({ STRAPI_APP_BASE_URL }) => {
             <img src='./static/chevron-down.svg' alt="Dropdown icon" />
             {dropdownOpen && (
               <div className={styles.dropdown_content}>
-                <div onClick={() => handleSort('featured')}>Featured</div>
-                <div onClick={() => handleSort('lowToHigh')}>Price: Low to High</div>
-                <div onClick={() => handleSort('highToLow')}>Price: High to Low</div>
+                <div className={styles.dropdown_item} onClick={() => handleSort('featured')}>Featured</div>
+                <div className={styles.dropdown_item} onClick={() => handleSort('lowToHigh')}>Price: Low to High</div>
+                <div className={styles.dropdown_item} onClick={() => handleSort('highToLow')}>Price: High to Low</div>
               </div>
             )}
           </div>

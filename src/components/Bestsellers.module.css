@@ -23,17 +23,13 @@
   width: 100%;
 }
 
-.dropdown_content a {
-  display: block;
-  padding: 8px 16px;
-  text-decoration: none;
-  color: black;
+.dropdown_item {
+  padding: .5rem;
 }
 
-.dropdown_content a:hover {
-  background-color: #f1f1f1;
+.dropdown_item:hover {
+  background-color: lightgray;
 }
-
 
 .flex_padding {
   display: flex;
