@@ -1,30 +1,33 @@
-'use client'
+'use client';
 
 import React, { useState, useEffect, MouseEvent } from 'react';
 import styles from './Navbar.module.css';
 import Link from 'next/link';
-import getData from './getData';
+import { fetchProducts } from './apiService';
+import Search from './Search';
 
 const Navbar = () => {
   const [dropdown1Visible, setDropdown1Visible] = useState(false);
   const [dropdown2Visible, setDropdown2Visible] = useState(false);
-  const [collections, setCollections] = useState<string[]>([]);
+  const [products, setProducts] = useState<any[]>([]);
 
-  // Acquire filtered collections data
+  // Acquire products
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const collectionsData = await getData();
-        if (collectionsData) {
-          setCollections(collectionsData);
+        const productsData = await fetchProducts();
+        if (productsData) {
+          setProducts(productsData);
         }
       } catch (error) {
-        console.error('Error fetching collections:', error);
+        console.error('Error fetching products:', error);
       }
     };
 
     fetchData();
   }, []);
+
+  const collections = Array.from(new Set(products.map((item: any) => item.attributes.collection)));
 
   // Dropdown functionality
   function toggleDropdown1() {
@@ -57,6 +60,7 @@ const Navbar = () => {
 
   return (
     <>
+      <Search products={products} />
       <div className={styles.nav}>
         <div className={styles.nav_container}>
           <div className={styles.mobile_menu_icon}>
@@ -78,11 +82,11 @@ const Navbar = () => {
                 </button>
                 <div className={styles.dropdown_content} style={{ display: dropdown1Visible ? 'block' : 'none' }}>
                   {collections.map((collection, index) => {
-                  const slug = collection.toLowerCase().replace(/\s+/g, '-');
-                  return (
-                    <Link key={index} href={`/collections/${slug}`}>
-                      {collection}
-                    </Link>
+                    const slug = collection.toLowerCase().replace(/\s+/g, '-');
+                    return (
+                      <Link key={index} href={`/collections/${slug}`}>
+                        {collection}
+                      </Link>
                     );
                   })}
                 </div>

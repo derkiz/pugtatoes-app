@@ -7,6 +7,7 @@ import Bestsellers from './Bestsellers'
 import Product from './Product'
 import Cards from './Cards'
 import All from './All'
+import Search from './Search'
 
 export {
   Navbar,
@@ -15,5 +16,6 @@ export {
   Bestsellers,
   Product,
   Cards,
-  All
+  All,
+  Search
 }
