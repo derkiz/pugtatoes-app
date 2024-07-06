@@ -4,14 +4,21 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './Search.module.css';
+import Link from 'next/link';
 
 const Search = ({ products }) => {
   const [isSearchVisible, setSearchVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const searchBarRef = useRef(null);
+  const resultsWrapperRef = useRef(null);
 
   const handleClickOutside = (event) => {
-    if (searchBarRef.current && !searchBarRef.current.contains(event.target)) {
+    if (
+      searchBarRef.current &&
+      resultsWrapperRef.current &&
+      !searchBarRef.current.contains(event.target) &&
+      !resultsWrapperRef.current.contains(event.target)
+    ) {
       setSearchVisible(false);
     }
   };
@@ -32,6 +39,10 @@ const Search = ({ products }) => {
     setSearchQuery(e.target.value);
   };
 
+  const handleLinkClick = () => {
+    setSearchVisible(false);
+  };
+
   const filteredProducts = searchQuery
     ? products.filter(product =>
         product.attributes.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -40,7 +51,9 @@ const Search = ({ products }) => {
 
   return (
     <>
-      <button className={styles.navButton} onClick={() => setSearchVisible(true)}>Search</button>
+      <button className={styles.navButton} onClick={() => setSearchVisible(true)}>
+        <img src='/static/search.svg'></img>
+      </button>
       {isSearchVisible && (
         <div className={styles.container}>
           <div className={styles.flex_container}>
@@ -57,18 +70,22 @@ const Search = ({ products }) => {
                 />
               </div>
               {searchQuery && (
-                <div className={styles.resultsWrapper}>
-                  <div>PRODUCTS</div>
+                <div className={styles.resultsWrapper} ref={resultsWrapperRef}>
+                  <div>Products</div>
                   <hr className={styles.hrColor}></hr>
                   <div className={styles.resultsContainer}>
                     {filteredProducts.length > 0 ? (
                       filteredProducts.map(product => (
                         <div key={product.id} className={styles.resultItem}>
-                          <img
-                            src={process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}
-                            className={styles.productImage}
-                          />
-                          <div className={styles.resultProductName}>{product.attributes.title}</div>
+                          <Link href={`/products/${product.attributes.slug}`} passHref>
+                            <div className={styles.handler}onClick={handleLinkClick}>
+                              <img
+                                src={process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}
+                                className={styles.productImage}
+                              />
+                              <div className={styles.resultProductName}>{product.attributes.title}</div>
+                            </div>
+                          </Link>
                         </div>
                       ))
                     ) : (
@@ -76,7 +93,7 @@ const Search = ({ products }) => {
                     )}
                   </div>
                   <hr className={styles.hrColor}></hr>
-                  <div>SEARCH RESULTS FOR: "{searchQuery}"</div>
+                  <div>Search results for: "{searchQuery}"</div>
                 </div>
               )}
             </div>

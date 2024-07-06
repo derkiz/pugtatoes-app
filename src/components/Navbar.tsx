@@ -60,7 +60,6 @@ const Navbar = () => {
 
   return (
     <>
-      <Search products={products} />
       <div className={styles.nav}>
         <div className={styles.nav_container}>
           <div className={styles.mobile_menu_icon}>
@@ -108,7 +107,7 @@ const Navbar = () => {
           </ul>
           <div className={styles.mobile_menu_icon_2}>
             {/* <img className={styles.nav_icon_2} src="/static/account.svg" alt="menu icon" /> */}
-            <img className={styles.nav_icon} src="/static/search.svg" alt="menu icon" />
+            <Search products={products} />
             <img className={styles.nav_icon} src="/static/cart.svg" alt="menu icon" />
           </div>
         </div>
