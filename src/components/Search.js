@@ -1,5 +1,3 @@
-// component/Search.js
-
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -57,21 +55,25 @@ const Search = ({ products }) => {
       {isSearchVisible && (
         <div className={styles.container}>
           <div className={styles.flex_container}>
-            <div className={styles.padding}></div>
             <div className={styles.flex_container_child}>
-              <div className={styles.searchBarContainer}>
-                <input
-                  type="text"
-                  ref={searchBarRef}
-                  className={styles.searchBar}
-                  placeholder="Type to search..."
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-                />
+              <div className={styles.searchParent}>
+                <div className={styles.searchBarContainer}>
+                  <input
+                    type="text"
+                    ref={searchBarRef}
+                    className={styles.searchBar}
+                    placeholder="Type to search..."
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                  />
+                </div> 
+                <button className={styles.closeButton} onClick={() => setSearchVisible(false)}>
+                  &times;
+                </button>
               </div>
               {searchQuery && (
                 <div className={styles.resultsWrapper} ref={resultsWrapperRef}>
-                  <div>Products</div>
+                  <div className={styles.productsHeader}>Products</div>
                   <hr className={styles.hrColor}></hr>
                   <div className={styles.resultsContainer}>
                     {filteredProducts.length > 0 ? (
@@ -92,15 +94,9 @@ const Search = ({ products }) => {
                       <div className={styles.noResults}>No results found</div>
                     )}
                   </div>
-                  <hr className={styles.hrColor}></hr>
-                  <div>Search results for: "{searchQuery}"</div>
+                  <div className={styles.searchResultItem}>Search results for: "{searchQuery}"</div>
                 </div>
               )}
-            </div>
-            <div className={styles.padding}>
-              <button className={styles.closeButton} onClick={() => setSearchVisible(false)}>
-                &times;
-              </button>
             </div>
           </div>
         </div>
