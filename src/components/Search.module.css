@@ -2,14 +2,15 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  box-sizing: border-box; /* Ensure padding and borders are included in the element's total width and height */
+  box-sizing: border-box;
+  font-family: 'Anonymous Pro', monospace;
 }
 
 .flex_container_child {
   display: flex;
   flex-direction: column;
-  width: 100%; /* Use 100% to take up the full width of the parent container */
-  max-width: 600px; /* Limit the maximum width to 600px */
+  width: 100%;
+  max-width: 600px;
   box-sizing: border-box;
 }
 
@@ -30,7 +31,7 @@
   height: 51.6px;
   padding: 1rem;
   background-color: white;
-  z-index: -1; /* Ensure it is behind the searchParent */
+  z-index: -1;
 }
 
 .container {
@@ -45,7 +46,7 @@
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
   box-sizing: border-box;
-  padding: 1rem; /* Optional: Add padding to ensure content is not flush with the edges */
+  padding: 1rem;
 }
 
 .searchBarContainer {
@@ -60,7 +61,7 @@
   border: none;
   outline: none;
   width: 100%;
-  padding: 0.5rem; /* Add padding for better spacing */
+  padding: 0.5rem;
   box-sizing: border-box;
 }
 
@@ -108,7 +109,7 @@
 
 .closeButton {
   position: absolute;
-  right: -40px; /* Adjust as needed to position the button */
+  right: -40px;
   background: none;
   border: none;
   color: black;
@@ -129,14 +130,12 @@
 }
 
 .resultProductName {
-  font-family: 'Anonymous Pro', monospace;
   padding: 1rem;
   font-size: 1rem;
 }
 
 .resultsWrapper {
   border: 2px solid black;
-  font-family: 'Poppins';
   font-size: 0.9rem;
   border-top: none;
   background: white;
@@ -145,7 +144,6 @@
 }
 
 .productsHeader {
-  font-family: 'Anonymous Pro', monospace;
   padding: 0.25rem 0.5rem;
   user-select: none;
   color: #333;
