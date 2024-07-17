@@ -1,3 +1,5 @@
+// component/Search.js
+
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -54,6 +56,7 @@ const Search = ({ products }) => {
       </button>
       {isSearchVisible && (
         <div className={styles.container}>
+          <div className={styles.searchParentBackground}></div> {/* Add the background element here */}
           <div className={styles.flex_container}>
             <div className={styles.flex_container_child}>
               <div className={styles.searchParent}>

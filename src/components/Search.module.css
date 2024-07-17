@@ -22,6 +22,17 @@
   box-sizing: border-box;
 }
 
+.searchParentBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 51.6px;
+  padding: 1rem;
+  background-color: white;
+  z-index: -1; /* Ensure it is behind the searchParent */
+}
+
 .container {
   position: fixed;
   top: 0;
@@ -40,7 +51,7 @@
 .searchBarContainer {
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
+  border: 2px solid black;
   width: 100%;
   box-sizing: border-box;
 }
@@ -124,7 +135,7 @@
 }
 
 .resultsWrapper {
-  border: 1px solid black;
+  border: 2px solid black;
   font-family: 'Poppins';
   font-size: 0.9rem;
   border-top: none;
