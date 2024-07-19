@@ -46,7 +46,7 @@ const Search = ({ products }) => {
   const filteredProducts = searchQuery
     ? products.filter(product =>
         product.attributes.title.toLowerCase().includes(searchQuery.toLowerCase())
-      )
+      ).slice(0, 6)
     : [];
 
   return (
@@ -56,7 +56,7 @@ const Search = ({ products }) => {
       </button>
       {isSearchVisible && (
         <div className={styles.container}>
-          <div className={styles.searchParentBackground}></div> {/* Add the background element here */}
+          <div className={styles.searchParentBackground}></div>
           <div className={styles.flex_container}>
             <div className={styles.flex_container_child}>
               <div className={styles.searchParent}>
@@ -69,7 +69,7 @@ const Search = ({ products }) => {
                     value={searchQuery}
                     onChange={handleSearchChange}
                   />
-                </div> 
+                </div>
                 <button className={styles.closeButton} onClick={() => setSearchVisible(false)}>
                   &times;
                 </button>
@@ -81,17 +81,17 @@ const Search = ({ products }) => {
                   <div className={styles.resultsContainer}>
                     {filteredProducts.length > 0 ? (
                       filteredProducts.map(product => (
-                        <div key={product.id} className={styles.resultItem}>
-                          <Link href={`/products/${product.attributes.slug}`} passHref>
-                            <div className={styles.handler}onClick={handleLinkClick}>
+                        <Link href={`/products/${product.attributes.slug}`} passHref key={product.id}>
+                          <div className={styles.resultItem}>
+                            <div className={styles.handler} onClick={handleLinkClick}>
                               <img
                                 src={process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}
                                 className={styles.productImage}
                               />
                               <div className={styles.resultProductName}>{product.attributes.title}</div>
                             </div>
-                          </Link>
-                        </div>
+                          </div>
+                        </Link>
                       ))
                     ) : (
                       <div className={styles.noResults}>No results found</div>

@@ -61,7 +61,7 @@
   border: none;
   outline: none;
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.75rem;
   box-sizing: border-box;
 }
 
@@ -124,9 +124,10 @@
 }
 
 .resultItem {
-  padding: 0.5rem;
+  padding: 0.5rem 0.75rem;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .resultProductName {
@@ -144,14 +145,14 @@
 }
 
 .productsHeader {
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem 0.75rem;
   user-select: none;
   color: #333;
   font-size: 0.8rem;
 }
 
 .searchResultItem {
-  padding: 0.5rem;
+  padding: 0.75rem;
   user-select: none;
   border-top: 1px solid lightgray;
 }
