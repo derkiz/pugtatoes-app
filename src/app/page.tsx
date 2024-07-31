@@ -1,15 +1,18 @@
-import { Cta, Bestsellers } from "@/components"
+// src/app/page.tsx
+import { Cta, Bestsellers } from "@/components";
+import { CartProvider } from "@/contexts/CartContext"; // Ensure the path matches your project structure
 
-const page = () => {
-
-  const STRAPI_APP_BASE_URL = process.env.STRAPI_APP_BASE_URL || 'failed';
+const Page = () => {
+  const STRAPI_APP_BASE_URL = process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL || 'failed';
 
   return (
-    <>
-      <Cta />
-      <Bestsellers STRAPI_APP_BASE_URL={STRAPI_APP_BASE_URL}/>
-    </>
-  )
-}
+    <CartProvider>
+      <div>
+        <Cta />
+        <Bestsellers STRAPI_APP_BASE_URL={STRAPI_APP_BASE_URL} />
+      </div>
+    </CartProvider>
+  );
+};
 
-export default page
+export default Page;

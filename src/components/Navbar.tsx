@@ -1,15 +1,17 @@
-'use client';
+'use client'
 
 import React, { useState, useEffect, MouseEvent } from 'react';
 import styles from './Navbar.module.css';
 import Link from 'next/link';
 import { fetchProducts } from './apiService';
 import Search from './Search';
+import { useCart } from '@/contexts/CartContext';
 
 const Navbar = () => {
   const [dropdown1Visible, setDropdown1Visible] = useState(false);
   const [dropdown2Visible, setDropdown2Visible] = useState(false);
   const [products, setProducts] = useState<any[]>([]);
+  const { cart } = useCart(); // Use the cart context
 
   // Acquire products
   useEffect(() => {
@@ -108,7 +110,12 @@ const Navbar = () => {
           <div className={styles.mobile_menu_icon_2}>
             {/* <img className={styles.nav_icon_2} src="/static/account.svg" alt="menu icon" /> */}
             <Search products={products} />
-            <img className={styles.nav_icon} src="/static/cart.svg" alt="menu icon" />
+            <Link href="/checkout">
+              <div className={styles.cart_container}>
+                <img className={styles.cart} src="/static/cart.svg" alt="cart icon" />
+                <div className={styles.cart_count}>{cart.length}</div>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

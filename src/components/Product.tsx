@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './Product.module.css';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { useCart } from '@/contexts/CartContext';
 
 interface ProductData {
   id: number;
@@ -40,6 +41,7 @@ const Product: React.FC<ProductProps> = ({ paramId, STRAPI_APP_BASE_URL }) => {
   const [product, setProduct] = useState<ProductData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [quantity, setQuantity] = useState<number>(1); // State to store quantity
+  const { addToCart } = useCart(); // Use the cart context
 
   useEffect(() => {
     const fetchData = async () => {
@@ -68,6 +70,17 @@ const Product: React.FC<ProductProps> = ({ paramId, STRAPI_APP_BASE_URL }) => {
 
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
+  };
+
+  const handleAddToCart = () => {
+    if (product) {
+      addToCart({
+        id: product.id,
+        title: product.attributes.title,
+        price: product.attributes.price,
+        quantity
+      });
+    }
   };
 
   if (loading) {
@@ -103,7 +116,7 @@ const Product: React.FC<ProductProps> = ({ paramId, STRAPI_APP_BASE_URL }) => {
               </div>
               <img src='/static/plus.svg' onClick={incrementQuantity}></img>
             </div>
-            <div className={styles.add_to_cart}>Add to cart</div>
+            <div className={styles.add_to_cart} onClick={handleAddToCart}>Add to cart</div>
             <div className={styles.buy_now}>Buy now</div>
             <div className={styles.share}>
               <img src='/static/upload.svg' alt='share.svg'></img>

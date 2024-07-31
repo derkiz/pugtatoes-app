@@ -11,7 +11,7 @@
   text-decoration: underline;
 }
 
-.nav_icon {
+.cart {
   width: 1.25rem;
   transition: transform 0.1s ease-in-out;
 }
@@ -21,7 +21,7 @@
   transition: transform 0.1s ease-in-out;
 }
 
-.nav_icon:hover,
+.cart:hover,
 .nav_icon_2:hover {
   transform: scale(1.1);
 }
