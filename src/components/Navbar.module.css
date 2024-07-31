@@ -16,15 +16,39 @@
   transition: transform 0.1s ease-in-out;
 }
 
-.nav_icon_2 {
-  width: 1.45rem;
-  transition: transform 0.1s ease-in-out;
+.cart_container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cart_count {
+  position: absolute;
+  font-family: monospace;
+  font-weight: 600;
+  top: -5px; /* Adjust to position the count properly */
+  right: -7px; /* Adjust to position the count properly */
+  background-color: red; /* Background color for the count bubble */
+  color: white; /* Text color */
+  border-radius: 50%; /* Makes the count bubble round */
+  width: 17px; /* Adjust size as needed */
+  height: 17px; /* Adjust size as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px; /* Adjust font size as needed */
 }
 
 .cart:hover,
 .nav_icon_2:hover {
   transform: scale(1.1);
 }
+
+.nav_icon_2 {
+  width: 1.45rem;
+  transition: transform 0.1s ease-in-out;
+}
+
 
 .mobile_menu_icon {
   display: none;
