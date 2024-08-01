@@ -82,8 +82,8 @@ const Search = ({ products }) => {
                     {filteredProducts.length > 0 ? (
                       filteredProducts.map(product => (
                         <Link href={`/products/${product.attributes.slug}`} passHref key={product.id}>
-                          <div className={styles.resultItem}>
-                            <div className={styles.handler} onClick={handleLinkClick}>
+                          <div className={styles.resultItem} onClick={handleLinkClick}>
+                            <div className={styles.handler}>
                               <img
                                 src={process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}
                                 className={styles.productImage}
