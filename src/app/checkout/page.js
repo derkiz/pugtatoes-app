@@ -4,6 +4,7 @@ import React from 'react';
 import { useCart } from '@/contexts/CartContext';
 import { loadStripe } from '@stripe/stripe-js';
 
+// Load Stripe outside of a component’s render to avoid recreating the `stripe` object on every render.
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 const Checkout = () => {
@@ -24,14 +25,12 @@ const Checkout = () => {
     }
 
     try {
-      const amount = calculateTotalAmount();
-
       const response = await fetch('/api/create-checkout-session', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ amount }),
+        body: JSON.stringify({ items: cart }), // Send the cart items
       });
 
       if (!response.ok) {
@@ -41,7 +40,7 @@ const Checkout = () => {
       const session = await response.json();
 
       const result = await stripe.redirectToCheckout({
-        sessionId: session.clientSecret, // Ensure this matches what your backend sends
+        sessionId: session.sessionId, // Use sessionId from the backend
       });
 
       if (result.error) {
@@ -63,7 +62,7 @@ const Checkout = () => {
             <ul>
               {cart.map((item) => (
                 <li key={item.id}>
-                  {item.title} - {item.quantity} x ${item.price}
+                  {item.title} - {item.quantity} x ${item.price.toFixed(2)}
                 </li>
               ))}
             </ul>

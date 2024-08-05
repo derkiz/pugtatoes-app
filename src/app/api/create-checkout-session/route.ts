@@ -1,24 +1,33 @@
-// app/api/create-checkout-session/route.ts
-
 import { NextRequest, NextResponse } from 'next/server';
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 export async function POST(request: NextRequest) {
   try {
-    const { amount } = await request.json();
+    const { items } = await request.json();
 
-    if (!amount || typeof amount !== 'number' || amount <= 0) {
-      throw new Error('Invalid or missing amount');
+    if (!items || !Array.isArray(items)) {
+      throw new Error('Invalid or missing items');
     }
 
-    // Ensure amount is in cents
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount: amount, // Amount should be in cents
-      currency: 'usd',
-      automatic_payment_methods: { enabled: true },
+    // Create a Checkout Session
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: items.map(item => ({
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: item.title,
+          },
+          unit_amount: item.price * 100, // Convert dollars to cents
+        },
+        quantity: item.quantity,
+      })),
+      mode: 'payment',
+      success_url: `${process.env.HOST}/success`,
+      cancel_url: `${process.env.HOST}/cancel`,
     });
 
-    return NextResponse.json({ clientSecret: paymentIntent.client_secret });
+    return NextResponse.json({ sessionId: session.id });
   } catch (error: any) {
     console.error('Internal Error:', error.message || error);
     return NextResponse.json(
