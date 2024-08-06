@@ -12,7 +12,8 @@ const Checkout = () => {
 
   // Function to calculate the total amount in cents
   const calculateTotalAmount = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0) * 100; // Convert dollars to cents
+    // Convert dollars to cents and round to the nearest integer
+    return Math.round(cart.reduce((total, item) => total + item.price * item.quantity, 0) * 100);
   };
 
   const handleCheckout = async () => {

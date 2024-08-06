@@ -18,13 +18,13 @@ export async function POST(request: NextRequest) {
           product_data: {
             name: item.title,
           },
-          unit_amount: item.price * 100, // Convert dollars to cents
+          unit_amount: Math.round(item.price * 100), // Convert dollars to cents and round to nearest integer
         },
         quantity: item.quantity,
       })),
       mode: 'payment',
-      success_url: `${process.env.HOST}/success`,
-      cancel_url: `${process.env.HOST}/cancel`,
+      success_url: `${process.env.NEXT_PUBLIC_HOST}/success`, // Update to use NEXT_PUBLIC_HOST
+      cancel_url: `${process.env.NEXT_PUBLIC_HOST}/cancel`,   // Update to use NEXT_PUBLIC_HOST
     });
 
     return NextResponse.json({ sessionId: session.id });
