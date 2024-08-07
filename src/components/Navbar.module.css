@@ -26,17 +26,17 @@
   position: absolute;
   font-family: monospace;
   font-weight: 600;
-  top: -5px; /* Adjust to position the count properly */
-  right: -7px; /* Adjust to position the count properly */
-  background-color: red; /* Background color for the count bubble */
-  color: white; /* Text color */
-  border-radius: 50%; /* Makes the count bubble round */
-  width: 17px; /* Adjust size as needed */
-  height: 17px; /* Adjust size as needed */
+  top: -5px; 
+  right: -7px; 
+  background-color: #000; 
+  color: white; 
+  border-radius: 50%; 
+  width: 17px; 
+  height: 17px; 
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px; /* Adjust font size as needed */
+  font-size: 12px; 
 }
 
 .cart:hover,
