@@ -1,0 +1,62 @@
+/* common-style.module.css */
+.container {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-family: 'Anonymous Pro', monospace;
+}
+
+@media (max-width: 47rem) {
+
+  .container{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+}
+
+.title {
+  font-family: Poppins, sans-serif;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.date {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.paragraph {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.sectionTitle {
+  font-family: Poppins, sans-serif;
+  font-size: 1.5em;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.subTitle {
+  font-family: Poppins, sans-serif;
+  font-size: 1.2em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.list {
+  margin-left: 20px;
+  list-style-type: disc;
+}
+
+.link {
+  color: black;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.contactInfo {
+  margin-top: 20px;
+}

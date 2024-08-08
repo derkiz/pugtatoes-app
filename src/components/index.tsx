@@ -8,6 +8,7 @@ import Product from './Product'
 import Cards from './Cards'
 import All from './All'
 import Search from './Search'
+import PrivacyPol from './PrivacyPol'
 
 export {
   Navbar,
@@ -17,5 +18,6 @@ export {
   Product,
   Cards,
   All,
-  Search
+  Search,
+  PrivacyPol
 }
