@@ -1,8 +1,11 @@
 import React from 'react'
+import { TermsAndConditions } from '@/components'
 
 const termsandconditions = () => {
   return (
-    <div>Terms and Conditions</div>
+    <>
+      <TermsAndConditions />
+    </>
   )
 }
 

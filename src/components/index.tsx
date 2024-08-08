@@ -9,6 +9,7 @@ import Cards from './Cards'
 import All from './All'
 import Search from './Search'
 import PrivacyPol from './PrivacyPol'
+import TermsAndConditions from './TermsAndConditions'
 
 export {
   Navbar,
@@ -19,5 +20,6 @@ export {
   Cards,
   All,
   Search,
-  PrivacyPol
+  PrivacyPol,
+  TermsAndConditions
 }
