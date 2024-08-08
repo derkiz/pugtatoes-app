@@ -1,8 +1,16 @@
 /* common-style.module.css */
+
+.flex_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .container {
   padding-left: 2rem;
   padding-right: 2rem;
   font-family: 'Anonymous Pro', monospace;
+  max-width: 1700px;
 }
 
 @media (max-width: 47rem) {
