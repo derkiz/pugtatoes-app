@@ -101,8 +101,8 @@ const Navbar = () => {
                   <img src='/static/chevron-down.svg' alt="chevron down" />
                 </button>
                 <div className={styles.dropdown_content} style={{ display: dropdown2Visible ? 'block' : 'none' }}>
-                  <a href="#">Our Story</a>
-                  <a href="#">Contact Us</a>
+                  <Link href="/pages/about">Our Story</Link>
+                  <Link href="/pages/contact">Contact Us</Link>
                 </div>
               </div>
             </div>
