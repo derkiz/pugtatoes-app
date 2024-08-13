@@ -10,6 +10,8 @@ import All from './All'
 import Search from './Search'
 import PrivacyPol from './PrivacyPol'
 import TermsAndConditions from './TermsAndConditions'
+import Contact from './Contact'
+import About from './About'
 
 export {
   Navbar,
@@ -21,5 +23,7 @@ export {
   All,
   Search,
   PrivacyPol,
-  TermsAndConditions
+  TermsAndConditions,
+  Contact,
+  About
 }

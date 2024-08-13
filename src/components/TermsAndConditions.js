@@ -51,7 +51,7 @@ const TermsAndConditions = () => {
             If you have any questions about these Terms, please contact us at:
           </p>
           <p className={styles.contactInfo}>
-            <strong>Pugatoes</strong><br />
+            <strong>Pugtatoes</strong><br />
             Email: <a href="mailto:support@pugtatoes.com" className={styles.link}>support@pugtatoes.com</a>
           </p>
         </div>
