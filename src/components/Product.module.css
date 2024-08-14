@@ -132,6 +132,18 @@
   .product_container {
     gap: 2rem;
    }
+
+   .add_to_cart {
+    max-width: none;
+    width: 100%;
+  }
+
+  .buy_now {
+    max-width: none;
+    width: 100%;
+  }
+
+  
  }
 
 @media (max-width: 42rem) {
