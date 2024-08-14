@@ -116,10 +116,15 @@
   outline: 2px solid black;
 }
 
+.tcontainer {
+  display: flex;
+}
+
 .title {
   font-family: Poppins, sans-serif;
   font-size: 3em;
-  margin-bottom: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .subText {
@@ -152,5 +157,19 @@
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .form_container form button {
+    align-self: center;
+  }
+
+  .tcontainer {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 25rem) {
+  .title {
+    font-size: 2em;
   }
 }

@@ -10,7 +10,7 @@ const Footer = () => {
         <div className={styles.footer_column}>
           <div className={styles.footer_title}>Quick Links</div>
             <ul>
-              <Link href="/collections" style={{ textDecoration: "none", color: "inherit" }}><li>Collections</li></Link>
+              <Link href="/collections" style={{ textDecoration: "none", color: "inherit" }}><li>Shop All</li></Link>
               <Link href="/pages/about" style={{ textDecoration: "none", color: "inherit" }}><li>About</li></Link>
               <Link href="/pages/contact" style={{ textDecoration: "none", color: "inherit" }}><li>Contact</li></Link>
               <Link href="/pages/contact" style={{ textDecoration: "none", color: "inherit" }}><li>Customer Support</li></Link>
