@@ -111,7 +111,9 @@
 
 .closeButton {
   position: absolute;
-  right: -40px;
+  /* fixes cross position */
+  right: 15px;
+  top: 5px;
   background: none;
   border: none;
   color: black;

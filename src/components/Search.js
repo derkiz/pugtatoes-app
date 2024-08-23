@@ -69,10 +69,12 @@ const Search = ({ products }) => {
                     value={searchQuery}
                     onChange={handleSearchChange}
                   />
+                  <div>
+                    <button className={styles.closeButton} onClick={() => setSearchVisible(false)}>
+                    &times;
+                    </button>
+                  </div>
                 </div>
-                <button className={styles.closeButton} onClick={() => setSearchVisible(false)}>
-                  &times;
-                </button>
               </div>
               {searchQuery && (
                 <div className={styles.resultsWrapper} ref={resultsWrapperRef}>
