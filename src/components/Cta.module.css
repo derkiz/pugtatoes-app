@@ -63,6 +63,11 @@
   user-select: none;
 }
 
+.cta_btn a {
+  text-decoration: none;
+  color: white;
+}
+
 .cta_btn:hover {
   transform: scale(1.05);
 } 
