@@ -74,10 +74,10 @@ const Navbar = () => {
             <Link href="/collections">
               <li className={styles.menu_item}>Shop All</li>
             </Link>
-            <li>|</li>
+            <li className={styles.seperator}>|</li>
             <div className={styles.menu_container}>
               <div className={styles.dropdown} id="myDropdown">
-                <button onClick={toggleDropdown1}>
+                <button onClick={toggleDropdown1} style={{ cursor: 'pointer' }}>
                   Collections
                   <img src='/static/chevron-down.svg' alt="chevron down" />
                 </button>
@@ -93,10 +93,10 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
-            <li>|</li>
+            <li className={styles.seperator}>|</li>
             <div className={styles.menu_container}>
               <div className={styles.dropdown} id="myDropdown2">
-                <button onClick={toggleDropdown2}>
+                <button onClick={toggleDropdown2} style={{ cursor: 'pointer' }}>
                   About
                   <img src='/static/chevron-down.svg' alt="chevron down" />
                 </button>

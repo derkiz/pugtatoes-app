@@ -11,6 +11,13 @@
   text-decoration: underline;
 }
 
+.seperator {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;    
+}
+
 .cart {
   width: 1.25rem;
   transition: transform 0.1s ease-in-out;
@@ -49,6 +56,12 @@
   transition: transform 0.1s ease-in-out;
 }
 
+.menu_item {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;    
+}
 
 .mobile_menu_icon {
   display: none;
