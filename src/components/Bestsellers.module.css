@@ -105,6 +105,7 @@
   font-size: 1rem;
   font-weight: normal;
   padding: 1rem;
+  text-align: center;
 }
 
 .cdesc {
@@ -139,5 +140,10 @@
   .title {
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 2rem;
+  }
+
+  .chead {
+    white-space: nowrap;
   }
 }
