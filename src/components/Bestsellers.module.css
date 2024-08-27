@@ -115,6 +115,9 @@
   padding-bottom: 1.5rem;
 }
 
+.products_length {
+  display: block;
+}
 
 @media (max-width: 47rem) {
   .card_container {
@@ -134,6 +137,14 @@
     width: 140px;
   }
 
+  .products_length {
+    display: none;
+  }
+
+  .filter {
+    justify-content: space-between;
+  }
+
 }
 
 @media (max-width: 30rem) {
@@ -146,4 +157,5 @@
   .chead {
     white-space: nowrap;
   }
+
 }

@@ -88,7 +88,7 @@ const All = ({ STRAPI_APP_BASE_URL }) => {
               </div>
             )}
           </div>
-          <div>{products.length} products</div>
+          <div className={styles.products_length}>{products.length} products</div>
         </div>
         <div className={styles.card_container}>
           {products.map(product => (
