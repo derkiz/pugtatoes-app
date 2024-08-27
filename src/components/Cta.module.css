@@ -111,4 +111,9 @@
     padding-bottom: 3rem;
   }
 
+  .title {
+    padding: 1rem;
+    font-size: 2rem;
+  }
+
 }
