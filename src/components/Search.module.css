@@ -180,3 +180,22 @@
   color: rgb(253, 253, 253);
   opacity: 50%;
 }
+
+@media (max-width: 47rem) {
+
+  .closeButton {
+    /* fixes cross position */
+    right: 15px;
+  }
+
+  .searchParentBackground {
+    /* background color placements */
+    height: 2.6rem;
+  }
+  
+  .container {
+    /* search box placement */
+    top: -0.2rem;
+  }
+  
+}
