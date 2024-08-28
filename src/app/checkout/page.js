@@ -1,3 +1,5 @@
+// app/checkout/page.js
+
 'use client';
 
 import React from 'react';
@@ -8,7 +10,7 @@ import { loadStripe } from '@stripe/stripe-js';
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 const Checkout = () => {
-  const { cart } = useCart();
+  const { cart, removeFromCart } = useCart(); // Destructure removeFromCart from useCart
 
   // Function to calculate the total amount in cents
   const calculateTotalAmount = () => {
@@ -64,6 +66,9 @@ const Checkout = () => {
               {cart.map((item) => (
                 <li key={item.id}>
                   {item.title} - {item.quantity} x ${item.price.toFixed(2)}
+                  <button onClick={() => removeFromCart(item.id)} style={{ marginLeft: '10px' }}>
+                    Remove
+                  </button>
                 </li>
               ))}
             </ul>
