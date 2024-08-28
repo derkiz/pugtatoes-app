@@ -12,6 +12,8 @@ import PrivacyPol from './PrivacyPol'
 import TermsAndConditions from './TermsAndConditions'
 import Contact from './Contact'
 import About from './About'
+import Success from './success'
+import Cancelled from './cancelled'
 
 export {
   Navbar,
@@ -25,5 +27,7 @@ export {
   PrivacyPol,
   TermsAndConditions,
   Contact,
-  About
+  About,
+  Success,
+  Cancelled
 }

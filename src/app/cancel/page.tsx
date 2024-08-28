@@ -1,8 +1,11 @@
 import React from 'react'
+import { Cancelled } from '@/components'
 
 const PaymentFailed = () => {
   return (
-    <div>PaymentFailed</div>
+    <>
+      <Cancelled />
+    </>
   )
 }
 

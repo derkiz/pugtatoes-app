@@ -1,9 +1,12 @@
 import React from 'react'
+import { Success } from '@/components'
 
-const Success = () => {
+const SuccessPage = () => {
   return (
-    <div>Success</div>
+    <>
+      <Success />
+    </>
   )
 }
 
-export default Success
+export default SuccessPage
