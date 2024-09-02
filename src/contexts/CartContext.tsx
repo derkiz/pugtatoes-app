@@ -1,8 +1,6 @@
-// src/contexts/CartContext.tsx
-
 'use client'
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 interface CartItem {
   id: number;
@@ -29,7 +27,19 @@ export const useCart = (): CartContextType => {
 };
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  // Initialize the cart state from localStorage if it exists
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    if (typeof window !== 'undefined') { // Ensure this runs only in the browser
+      const storedCart = localStorage.getItem('cart');
+      return storedCart ? JSON.parse(storedCart) : [];
+    }
+    return [];
+  });
+
+  // Persist the cart state to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]); // Effect runs whenever the 'cart' state changes
 
   const addToCart = (item: CartItem) => {
     setCart((prevCart) => {
