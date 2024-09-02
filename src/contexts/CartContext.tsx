@@ -27,19 +27,26 @@ export const useCart = (): CartContextType => {
 };
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  // Initialize the cart state from localStorage if it exists
-  const [cart, setCart] = useState<CartItem[]>(() => {
-    if (typeof window !== 'undefined') { // Ensure this runs only in the browser
+  const [cart, setCart] = useState<CartItem[]>([]); // Initially set to an empty array
+  const [isInitialized, setIsInitialized] = useState(false); // Track when the cart is loaded
+
+  // Load cart from localStorage only after the component mounts
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
       const storedCart = localStorage.getItem('cart');
-      return storedCart ? JSON.parse(storedCart) : [];
+      if (storedCart) {
+        setCart(JSON.parse(storedCart));
+      }
+      setIsInitialized(true); 
     }
-    return [];
-  });
+  }, []);
 
   // Persist the cart state to localStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]); // Effect runs whenever the 'cart' state changes
+    if (isInitialized) { 
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+  }, [cart, isInitialized]); 
 
   const addToCart = (item: CartItem) => {
     setCart((prevCart) => {
@@ -60,6 +67,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const clearCart = () => {
     setCart([]);
   };
+
+  if (!isInitialized) {
+    return null;
+  }
 
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
