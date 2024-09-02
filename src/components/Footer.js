@@ -6,12 +6,21 @@ import Link from 'next/link';
 
 const Footer = () => {
   const [subscribed, setSubscribed] = useState(false);
-  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubscribe = (e) => {
     e.preventDefault(); // Prevent the form from submitting
-    if (name.trim()) {
+    
+    // Email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (email.trim() && emailRegex.test(email)) {
       setSubscribed(true);
+      setError(''); // Clear any previous error message
+    } else {
+      setError('Please enter a valid email address.');
+      setSubscribed(false);
     }
   };
 
@@ -46,16 +55,17 @@ const Footer = () => {
             <form onSubmit={handleSubscribe} className={styles.insert_email}>
               <input
                 type="text"
-                name="name"
-                id="name"
+                name="email"
+                id="email"
                 placeholder=" "
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className={styles.input_field}
               />
-              <label className={styles.label} htmlFor="name">Your Email *</label>
+              <label className={styles.label} htmlFor="email">Your Email *</label>
             </form>
-            {subscribed && <div className={styles.thank_you_message}>Thanks for subscribing!</div>}
+            {error && <div className={styles.error_message}>{error}</div>}
+            {subscribed && !error && <div className={styles.thank_you_message}>Thanks for subscribing!</div>}
           </div>
           <div className={styles.socials}>
             <div className={styles.social_item}>
@@ -71,7 +81,7 @@ const Footer = () => {
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default Footer;
