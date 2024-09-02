@@ -6,21 +6,22 @@ import Link from 'next/link';
 
 const Footer = () => {
   const [subscribed, setSubscribed] = useState(false);
-  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
   const [error, setError] = useState('');
 
   const handleSubscribe = (e) => {
     e.preventDefault(); // Prevent the form from submitting
-    
-    // Email validation regex
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (email.trim() && emailRegex.test(email)) {
-      setSubscribed(true);
-      setError(''); // Clear any previous error message
-    } else {
+    if (!name.trim()) {
+      setError('Please enter your email.');
+      setSubscribed(false);
+    } else if (!emailRegex.test(name.trim())) {
       setError('Please enter a valid email address.');
       setSubscribed(false);
+    } else {
+      setError('');
+      setSubscribed(true);
     }
   };
 
@@ -55,17 +56,17 @@ const Footer = () => {
             <form onSubmit={handleSubscribe} className={styles.insert_email}>
               <input
                 type="text"
-                name="email"
-                id="email"
+                name="name"
+                id="name"
                 placeholder=" "
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 className={styles.input_field}
               />
-              <label className={styles.label} htmlFor="email">Your Email *</label>
+              <label className={styles.label} htmlFor="name">Your Email *</label>
             </form>
-            {error && <div className={styles.error_message}>{error}</div>}
-            {subscribed && !error && <div className={styles.thank_you_message}>Thanks for subscribing!</div>}
+            {error && <div className={styles.newsletter_update}>{error}</div>}
+            {subscribed && <div className={styles.newsletter_update}>Thanks for subscribing!</div>}
           </div>
           <div className={styles.socials}>
             <div className={styles.social_item}>
@@ -81,7 +82,7 @@ const Footer = () => {
         </div>
       </div>
     </>
-  );
+  )
 }
 
 export default Footer;
