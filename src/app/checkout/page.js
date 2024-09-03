@@ -5,6 +5,7 @@
 import React from 'react';
 import { useCart } from '@/contexts/CartContext';
 import { loadStripe } from '@stripe/stripe-js';
+import styles from './checkout.module.css';
 
 // Load Stripe outside of a component’s render to avoid recreating the `stripe` object on every render.
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
@@ -65,8 +66,10 @@ const Checkout = () => {
             <ul>
               {cart.map((item) => (
                 <li key={item.id}>
+                  <div className={styles.yoink}>{item.imageUrl}</div>
+                  <img src={item.imageUrl} alt={item.title}/>
                   {item.title} - {item.quantity} x ${item.price.toFixed(2)}
-                  <button onClick={() => removeFromCart(item.id)} style={{ marginLeft: '10px' }}>
+                  <button onClick={() => removeFromCart(item.id)}>
                     Remove
                   </button>
                 </li>

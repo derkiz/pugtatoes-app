@@ -78,6 +78,7 @@ const Product: React.FC<ProductProps> = ({ paramId, STRAPI_APP_BASE_URL }) => {
         id: product.id,
         title: product.attributes.title,
         price: product.attributes.price,
+        imageUrl: STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url, // CHANGES MADE HERE
         quantity
       });
     }
