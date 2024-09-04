@@ -140,6 +140,7 @@
   .footer {
     padding: 1rem;
     padding-top: 2rem;
+    height: 100%;
   }
 
   .footer_flex_container {
@@ -177,5 +178,18 @@
   .socials {
     display: flex;
     justify-content: center;
+  }
+
+  .input_field {
+    background-color: var(--dark-col);
+    border: none;
+    color: white;
+    font-family: 'Anonymous Pro', monospace;
+    font-size: 1rem;
+    padding: 1rem;
+    padding-top: 1.5rem;
+    min-width: 0px;
+    border: none;
+    outline: 1px solid var(--footer-col);
   }
 }
