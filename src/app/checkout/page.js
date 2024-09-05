@@ -77,11 +77,16 @@ const Checkout = () => {
                           <span>{item.quantity}</span>
                           <button onClick={() => updateCartItemQuantity(item.id, item.quantity + 1)}>+</button>
                         </div>
+                        <div>
+                          <button onClick={() => removeFromCart(item.id)}>
+                            Remove
+                          </button>
+                        </div>
                       </div>
                       <div className={styles.section_3}>
-                        <button onClick={() => removeFromCart(item.id)}>
-                        Remove
-                        </button>
+                        <div>
+                          Total Price: ${(item.price * item.quantity).toFixed(2)} {/* Display total price per item */}
+                        </div>
                       </div>
                     </div>
                   ))}

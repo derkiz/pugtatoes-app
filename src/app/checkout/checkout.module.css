@@ -19,6 +19,7 @@
 
 .cart_flex {
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
   padding-bottom: 1rem;
 }
@@ -33,15 +34,13 @@
 }
 
 .section_2 {
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
   max-width: 150px;
   max-height: 150px;
   outline: 1px solid red;
 }
 
 .section_3 {
-  margin-left: auto;
   max-width: 150px;
   max-height: 150px;
   outline: 1px solid red;
@@ -53,7 +52,7 @@
 }
 
 @media (max-width: 47rem) {
-  .container {
+  .parent {
     padding: 1rem;
   }
 }
