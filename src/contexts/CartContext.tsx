@@ -15,6 +15,7 @@ interface CartContextType {
   addToCart: (item: CartItem) => void;
   removeFromCart: (id: number) => void;
   clearCart: () => void;
+  updateCartItemQuantity: (id: number, quantity: number) => void; // New function to update quantity
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -44,16 +45,16 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   // Persist the cart state to localStorage whenever it changes
   useEffect(() => {
-    if (isInitialized) { 
+    if (isInitialized) {
       localStorage.setItem('cart', JSON.stringify(cart));
     }
-  }, [cart, isInitialized]); 
+  }, [cart, isInitialized]);
 
   const addToCart = (item: CartItem) => {
     setCart((prevCart) => {
       const existingItem = prevCart.find(cartItem => cartItem.id === item.id);
       if (existingItem) {
-        return prevCart.map(cartItem => 
+        return prevCart.map(cartItem =>
           cartItem.id === item.id ? { ...cartItem, quantity: cartItem.quantity + item.quantity } : cartItem
         );
       }
@@ -69,12 +70,21 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setCart([]);
   };
 
+  // Function to update the quantity of an item in the cart
+  const updateCartItemQuantity = (id: number, quantity: number) => {
+    setCart((prevCart) =>
+      prevCart.map((cartItem) =>
+        cartItem.id === id ? { ...cartItem, quantity: Math.max(1, quantity) } : cartItem
+      )
+    );
+  };
+
   if (!isInitialized) {
     return null;
   }
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, updateCartItemQuantity }}>
       {children}
     </CartContext.Provider>
   );

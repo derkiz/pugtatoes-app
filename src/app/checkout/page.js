@@ -1,5 +1,3 @@
-// app/checkout/page.js
-
 'use client';
 
 import React from 'react';
@@ -11,11 +9,10 @@ import styles from './checkout.module.css';
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 const Checkout = () => {
-  const { cart, removeFromCart } = useCart(); // Destructure removeFromCart from useCart
+  const { cart, removeFromCart, updateCartItemQuantity } = useCart(); // Destructure updateCartItemQuantity
 
   // Function to calculate the total amount in cents
   const calculateTotalAmount = () => {
-    // Convert dollars to cents and round to the nearest integer
     return Math.round(cart.reduce((total, item) => total + item.price * item.quantity, 0) * 100);
   };
 
@@ -75,14 +72,17 @@ const Checkout = () => {
                         </div>
                       </div>
                       <div className={styles.section_2}>
-                        QUANTITY
+                        <div>
+                          <button onClick={() => updateCartItemQuantity(item.id, item.quantity - 1)} disabled={item.quantity <= 1}>-</button>
+                          <span>{item.quantity}</span>
+                          <button onClick={() => updateCartItemQuantity(item.id, item.quantity + 1)}>+</button>
+                        </div>
                       </div>
                       <div className={styles.section_3}>
                         <button onClick={() => removeFromCart(item.id)}>
                         Remove
-                      </button>
+                        </button>
                       </div>
-                      
                     </div>
                   ))}
                 </ul>
