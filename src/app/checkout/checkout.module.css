@@ -13,14 +13,48 @@
   width: 100%;
 }
 
+.categories {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Anonymous Pro', sans-serif;
+  font-size: .8rem;
+  color:rgb(50, 50, 50);
+  margin-bottom: .2rem;
+}
+
+.cat1 {
+  width: 330px;
+}
+
+.cat2 {
+  width: 178px;
+}
+
+.cat2 {
+  width: 178px;
+}
+
+.cat3 {
+  text-align: end;
+  width: 90px;
+}
+
 .divider {
-  border: 1px solid gray;
+  border: 1px solid rgb(167, 167, 167);
   border-top: none;
+  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.cart_container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .title {
   font-family: 'Poppins', sans-serif;
   font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
 .header {
@@ -45,7 +79,6 @@
   flex-direction: row;
   gap: 2rem;
   width: 330px;
-  outline: 1px solid red;
 }
 
 .section_2 {
@@ -53,14 +86,19 @@
 }
 
 .section_3 {
+  display: flex;
+  align-items: center;
   font-family: 'Anonymous Pro', sans-serif;
   width: 90px;
-  text-align: end;
-  outline: 1px solid red;
+  height: 35px;
+}
+
+.section_3 div {
+  margin-left: auto;
 }
 
 .section img {
-  max-width: 150px;
+  max-width: 200px;
   height: auto;
 }
 
@@ -102,6 +140,13 @@
   padding: 0rem 1rem;
 }
 
+.chsec {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .checkout {
   align-self: flex-end;
   font-family: 'Anonymous Pro', monospace;
@@ -116,7 +161,14 @@
   outline: 1px solid black;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.1s ease-in;
 }
+
+.checkout:hover {
+  transform: scale(1.03);
+}
+
 
 .chout {
   display: flex;
@@ -127,10 +179,12 @@
 .chout_header {
   font-family: 'Poppins', sans-serif;
   font-size: 1.1rem;
+  font-weight: bold;
   color: rgb(50, 50, 50);
 }
 
 .chout_total {
+  margin-top: auto;
   padding-left: 1rem;
   font-family: 'Poppins', sans-serif;
   font-size: 1.1rem;
@@ -159,6 +213,14 @@
     padding: 1rem;
   }
 
+  .cat1 {
+    width: 240px;
+  }
+  
+  .cat2 {
+    width: 162px;
+  }
+
   .section {
     width: 240px;
     gap: 1rem;
@@ -182,6 +244,20 @@
 }
 
 @media (max-width: 34rem) {
+
+  .cat2 {
+    display: none;
+  }
+
+  .section_3 {
+    display: block;
+    text-align: end;
+  }
+  
+  .section_3 div {
+    margin-left: none;
+  }
+  
 
   .section_2 {
     display: none;
@@ -228,6 +304,14 @@
     height: auto;
   }
 
+  .chout_desc {
+    text-align: center;
+    font-size: .9rem;
+  }
+  
+  .checkout {
+    align-self: center;
+  }
 }
 
 @media (max-width: 24rem) {

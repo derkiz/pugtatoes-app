@@ -58,11 +58,17 @@ const Checkout = () => {
         <div className={styles.container}>
           <div className={styles.title}>Your cart</div>
             {cart.length === 0 ? (
-              <p>Your cart is empty</p>
+              <div className={styles.desc}>Your cart is empty.</div>
             ) : (
               <>
                 <ul>
+                <div className={styles.categories}>
+                  <div className={styles.cat1}>PRODUCT</div>
+                  <div className={styles.cat2}>QUANTITY</div>
+                  <div className={styles.cat3}>PRICE</div>
+                </div>
                 <div className={styles.divider}></div>
+                <div className={styles.cart_container}>
                   {cart.map((item) => (
                     <div key={item.id} className={styles.cart_flex}>
                       <div className={styles.section}>
@@ -99,15 +105,17 @@ const Checkout = () => {
                       </div>
                     </div>
                   ))}
-                </ul>
-                <div className={styles.chout}>
-                  <div className={styles.chout_header}>
-                    <strong>Subtotal</strong>
-                  </div>
-                  <div className={styles.chout_total}>{`$${(calculateTotalAmount() / 100).toFixed(2)}`}</div>
                 </div>
-                <div className={styles.chout_desc}> Taxes and shipping fees will be handled at checkout</div>
-                <div className={styles.checkout} onClick={handleCheckout}>Check out</div>
+                </ul>
+                <div className={styles.divider}></div>
+                <div className={styles.chsec}>
+                  <div className={styles.chout}>
+                    <div className={styles.chout_header}>Subtotal</div>
+                    <div className={styles.chout_total}>{`$${(calculateTotalAmount() / 100).toFixed(2)}`} USD</div>
+                  </div>
+                  <div className={styles.chout_desc}> Taxes and shipping fees will be handled at checkout</div>
+                  <div className={styles.checkout} onClick={handleCheckout}>Check out</div>
+                </div>
               </>
             )}
         </div>
