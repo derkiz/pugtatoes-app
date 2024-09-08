@@ -62,6 +62,7 @@ const Checkout = () => {
             ) : (
               <>
                 <ul>
+                <div className={styles.divider}></div>
                   {cart.map((item) => (
                     <div key={item.id} className={styles.cart_flex}>
                       <div className={styles.section}>
@@ -99,7 +100,14 @@ const Checkout = () => {
                     </div>
                   ))}
                 </ul>
-                <button onClick={handleCheckout}>Check out</button>
+                <div className={styles.chout}>
+                  <div className={styles.chout_header}>
+                    <strong>Subtotal</strong>
+                  </div>
+                  <div className={styles.chout_total}>{`$${(calculateTotalAmount() / 100).toFixed(2)}`}</div>
+                </div>
+                <div className={styles.chout_desc}> Taxes and shipping fees will be handled at checkout</div>
+                <div className={styles.checkout} onClick={handleCheckout}>Check out</div>
               </>
             )}
         </div>
