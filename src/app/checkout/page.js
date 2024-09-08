@@ -67,25 +67,33 @@ const Checkout = () => {
                       <div className={styles.section}>
                         <img src={item.imageUrl} alt={item.title}/>
                         <div>
-                          <div>{item.title}</div>
-                          <div>${item.price}</div>
+                          <div className={styles.header}>{item.title}</div>
+                          <div className={styles.desc}>${item.price}</div>
+                          <div className={styles.quant_section}>
+                            <div className={styles.quant}>
+                              <button onClick={() => updateCartItemQuantity(item.id, item.quantity - 1)} disabled={item.quantity <= 1}>-</button>
+                              <span>{item.quantity}</span>
+                              <button onClick={() => updateCartItemQuantity(item.id, item.quantity + 1)}>+</button>
+                            </div>
+                            <div className={styles.bin} onClick={() => removeFromCart(item.id)}>
+                              <img src='/static/trash.svg' alt='x'></img>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div className={styles.section_2}>
-                        <div>
+                        <div className={styles.quantity}>
                           <button onClick={() => updateCartItemQuantity(item.id, item.quantity - 1)} disabled={item.quantity <= 1}>-</button>
                           <span>{item.quantity}</span>
                           <button onClick={() => updateCartItemQuantity(item.id, item.quantity + 1)}>+</button>
                         </div>
-                        <div>
-                          <button onClick={() => removeFromCart(item.id)}>
-                            Remove
-                          </button>
+                        <div className={styles.bin} onClick={() => removeFromCart(item.id)}>
+                          <img src='/static/trash.svg' alt='x'></img>
                         </div>
                       </div>
                       <div className={styles.section_3}>
                         <div>
-                          Total Price: ${(item.price * item.quantity).toFixed(2)} {/* Display total price per item */}
+                          ${(item.price * item.quantity).toFixed(2)}
                         </div>
                       </div>
                     </div>

@@ -2,19 +2,29 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 2rem;
+  padding: 0rem 2rem;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   max-width: 1700px;
+  min-height: 400px;
   width: 100%;
 }
 
 .title {
   font-family: 'Poppins', sans-serif;
   font-size: 2rem;
+}
+
+.header {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.25rem;
+}
+
+.desc {
+  font-family: 'Anonymous Pro', sans-serif;
 }
 
 .cart_flex {
@@ -28,31 +38,162 @@
   display: flex;
   flex-direction: row;
   gap: 2rem;
-  min-width: 200px;
-  max-height: 200px;
+  width: 330px;
   outline: 1px solid red;
 }
 
 .section_2 {
   display: flex;
-  max-width: 150px;
-  max-height: 150px;
-  outline: 1px solid red;
 }
 
 .section_3 {
-  max-width: 150px;
-  max-height: 150px;
+  font-family: 'Anonymous Pro', sans-serif;
+  width: 90px;
+  text-align: end;
   outline: 1px solid red;
 }
 
 .section img {
   max-width: 150px;
-  height: 100%;
+  height: auto;
+}
+
+.quantity {
+  gap: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Poppins;
+  height: 35px;
+  padding: 0rem 1.5rem;
+  outline: 1px solid black;
+}
+
+.quantity span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+}
+
+.quantity button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+  background: none;
+  border: none;
+  color: black;
+  outline: none;
+  box-shadow: none;
+}
+
+.bin {
+  height: 35px;
+  align-content: center;
+  padding: 0rem 1rem;
+}
+
+/* quantity in section */
+.quant {
+  display: none;
+}
+
+.quant_section {
+  display: none;
+  margin-top: 0.5rem;
 }
 
 @media (max-width: 47rem) {
   .parent {
     padding: 1rem;
   }
+
+  .section {
+    width: 240px;
+    gap: 1rem;
+  }
+
+  .header {
+    font-size: 1rem;
+  }
+
+  .section img {
+    height: 100px;
+    width: auto;
+  }
+
+  .quantity {
+    height: 35px;
+    padding: 0rem 1.5em;
+    gap: .5rem;
+  }
+
 }
+
+@media (max-width: 34rem) {
+
+  .section_2 {
+    display: none;
+  }
+
+  .quant {
+    display: flex;
+    gap: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Poppins;
+    height: 35px;
+    padding: 0rem 1.5rem;
+    outline: 1px solid black;
+  }
+  
+  .quant span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+  }
+  
+  .quant button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    background: none;
+    border: none;
+    color: black;
+    outline: none;
+    box-shadow: none;
+  }
+  
+  .quant_section {
+    display: flex;
+  }
+
+  .bin img {
+    width: 16px;
+    height: auto;
+  }
+
+}
+
+@media (max-width: 24rem) {
+
+  .quant {
+    gap: .75rem;
+    padding: 0rem .5rem
+  }
+  
+  .bin {
+    height: 35px;
+    align-content: center;
+    padding: 0rem 0.5rem
+  }
+
+}
+
+

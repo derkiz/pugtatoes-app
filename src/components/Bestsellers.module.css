@@ -158,4 +158,8 @@
     white-space: nowrap;
   }
 
+  .quantity {
+    padding: .5rem 1rem;
+  }
+
 }
