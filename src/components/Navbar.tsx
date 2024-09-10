@@ -12,6 +12,11 @@ const Navbar = () => {
   const [dropdown2Visible, setDropdown2Visible] = useState(false);
   const [products, setProducts] = useState<any[]>([]);
   const { cart } = useCart(); // Use the cart context
+  const [mobileNavVisible, setMobileNavVisible] = useState(false); // Mobile nav state
+  const [mobileCollectionsVisible, setMobileCollectionsVisible] = useState(false); // Mobile collections toggle
+
+  // Media query breakpoint (47rem = 752px)
+  const mobileBreakpoint = 752;
 
   // Acquire products
   useEffect(() => {
@@ -30,6 +35,16 @@ const Navbar = () => {
   }, []);
 
   const collections = Array.from(new Set(products.map((item: any) => item.attributes.collection)));
+
+  // Map over collections and store them in a constant
+  const collectionsLinks = collections.map((collection, index) => {
+    const slug = collection.toLowerCase().replace(/\s+/g, '-');
+    return (
+      <Link key={index} href={`/collections/${slug}`}>
+        {collection}
+      </Link>
+    );
+  });
 
   // Dropdown functionality
   function toggleDropdown1() {
@@ -60,11 +75,41 @@ const Navbar = () => {
     };
   }, [dropdown1Visible, dropdown2Visible]);
 
+  // Mobile menu toggle functionality
+  const toggleMobileNav = () => {
+    setMobileNavVisible(!mobileNavVisible);
+  };
+
+  const closeMobileNav = () => {
+    setMobileNavVisible(false);
+  };
+
+  // Toggle collections in mobile view
+  const toggleMobileCollections = () => {
+    setMobileCollectionsVisible(!mobileCollectionsVisible);
+  };
+
+  // Close the mobile nav automatically if the viewport width exceeds 752px (47rem)
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > mobileBreakpoint) {
+        setMobileNavVisible(false); // Close the mobile nav
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <>
       <div className={styles.nav}>
         <div className={styles.nav_container}>
-          <div className={styles.mobile_menu_icon}>
+          <div className={styles.mobile_menu_icon} onClick={toggleMobileNav}>
             <img className={styles.list_svg} src="/static/list.svg" alt="menu icon" />
           </div>
           <Link href='/'>
@@ -82,14 +127,7 @@ const Navbar = () => {
                   <img src='/static/chevron-down.svg' alt="chevron down" />
                 </button>
                 <div className={styles.dropdown_content} style={{ display: dropdown1Visible ? 'block' : 'none' }}>
-                  {collections.map((collection, index) => {
-                    const slug = collection.toLowerCase().replace(/\s+/g, '-');
-                    return (
-                      <Link key={index} href={`/collections/${slug}`}>
-                        {collection}
-                      </Link>
-                    );
-                  })}
+                  {collectionsLinks}
                 </div>
               </div>
             </div>
@@ -108,7 +146,6 @@ const Navbar = () => {
             </div>
           </ul>
           <div className={styles.mobile_menu_icon_2}>
-            {/* <img className={styles.nav_icon_2} src="/static/account.svg" alt="menu icon" /> */}
             <Search products={products} />
             <Link href="/checkout">
               <div className={styles.cart_container}>
@@ -120,6 +157,28 @@ const Navbar = () => {
             </Link>
           </div>
         </div>
+      </div>
+
+      {/* Overlay */}
+      {mobileNavVisible && (
+        <div className={`${styles.overlay} ${mobileNavVisible ? styles.overlayActive : ''}`} onClick={closeMobileNav}></div>
+      )}
+
+      {/* Mobile Nav */}
+      <div className={`${styles.mobileNav} ${mobileNavVisible ? styles.mobileNavActive : ''}`}>
+        <div onClick={closeMobileNav}>Shop All</div>
+
+        {/* Toggle collections under the Collections link */}
+        <div onClick={toggleMobileCollections} className={styles.mobileNavItem}>
+          Collections
+          {mobileCollectionsVisible && (
+            <div className={styles.mobileDropdownContent}>
+              {collectionsLinks}
+            </div>
+          )}
+        </div>
+        <div onClick={closeMobileNav}>Our Story</div>
+        <div onClick={closeMobileNav}>Contact</div>
       </div>
     </>
   );

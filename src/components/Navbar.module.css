@@ -209,3 +209,78 @@
   background-color: #f1f1f1;
   text-decoration: none;
 }
+
+/* Default styles for the mobile menu (hidden by default) */
+.mobileNav {
+  font-family: 'Anonymous Pro', sans-serif;
+  font-size: 1rem;
+  position: fixed;
+  top: 0;
+  left: -90%; /* Offscreen initially */
+  width: 70%;
+  height: 100vh;
+  background-color: #fff; /* Adjust the background as needed */
+  z-index: 1000;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+  transition: left 0.3s ease-in-out;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.mobileNavActive {
+  left: 0; /* Bring the menu into view */
+}
+
+/* Mobile menu items styling */
+.mobileNav div {
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.mobile_menu_icon {
+  cursor: pointer;
+  z-index: 1100; /* Ensure the menu button is above the menu */
+}
+
+/* Overlay for when the menu is active */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 900; /* Under the menu but above the rest of the content */
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.overlayActive {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobileDropdownContent {
+  margin-left: 1rem; /* Optional: indent the items under Collections */
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.mobileNavItem {
+  cursor: pointer;
+  padding: 10px 0;
+  position: relative;
+}
+
+/* .mobileNavItem img {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+} */
