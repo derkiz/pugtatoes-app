@@ -1,6 +1,74 @@
 @import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Poppins:wght@300;400&display=swap');
 
 
+/* nav menu */
+
+.menu_container:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.menu_item {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;    
+}
+
+.mobile_menu_icon {
+  display: none;
+}
+
+.mobile_menu_icon_2 {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+  margin-bottom: auto;
+  gap: 1.00rem;
+  margin-left: auto;
+}
+
+.nav {
+  padding: 2rem;
+  background-color: white;
+}
+
+.nav_container {
+  display: flex;
+  margin: auto;
+  justify-content: left;
+  max-width: 1700px;
+}
+
+.nav_container a {
+  display: flex;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav_container a:hover {
+  text-decoration: underline;
+}
+
+.nav_container ul {
+  font-family: 'Anonymous Pro', monospace;
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 1rem;
+  color: black;
+}
+
+.seperator {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;    
+}
+
+/* nav menu end */
+
+
 /* General Navigation Styles */
 .nav {
   padding: 2rem;
@@ -20,6 +88,10 @@
   align-items: center;
 }
 
+.menu_container:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
 
 
 .mobile_menu_icon {
@@ -52,6 +124,8 @@
 
 .cart_count {
   position: absolute;
+  font-family: monospace;
+  font-weight: 600;
   top: -5px; 
   right: -7px; 
   background-color: #000; 
@@ -66,8 +140,70 @@
 }
 
 .logo {
-  padding: 0;
+  width: 9rem;
+  padding-right: 2rem;
 }
+
+.chevron {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chevron img {
+  width: 0.6rem;
+  height: 0.6rem;
+  padding-right: 0.25rem;
+  padding-left: 0.25rem;
+}
+
+/* drop down styles */
+
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown button {
+  font-family: 'Anonymous Pro', monospace;
+  font-size: 1rem;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown button img {
+  width: .6rem;
+  padding: .25rem;
+}
+
+.dropdown_content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 155px;
+  border: 2px solid black;
+  z-index: 1;
+  padding: 1rem 0.5rem;
+  top: 30px;
+}
+
+.dropdown_content a {
+  color: black;
+  padding: 0.5rem;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  text-decoration: none;
+}
+
+
+/* drop down styles end */
 
 /* Mobile Menu Icon */
 @media (max-width: 47rem) {
