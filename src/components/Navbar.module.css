@@ -242,6 +242,20 @@
   .logo {
     padding: 0rem;
   }
+
+  .collecs {
+    padding: 1rem;
+  }
+
+  .collecs a{
+    color: black !important;
+    text-decoration: none;
+  }
+
+  .collecs:hover {
+    text-decoration: underline;
+    background-color: #eee ;
+  };
 }
 
 /* Mobile Navigation Menu */
@@ -252,7 +266,7 @@
   left: -100%; /* Initially off-screen */
   width: 70%;
   height: 100vh;
-  background-color: #fff;
+  background-color: white;
   z-index: 1000;
   transition: left 0.3s ease-in-out;
   padding: 20px;
@@ -271,12 +285,15 @@
   cursor: pointer;
   padding: 1rem;
 }
+.mobileNavItem:hover {
+  text-decoration: underline;
+}
 
 /* Collections Submenu */
 .submenu {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 20px;
   animation: slideIn 0.3s forwards; /* Slide animation */
 }
 
@@ -291,10 +308,22 @@
 
 .backButton {
   cursor: pointer;
-  margin-bottom: 1rem;
-  padding: 0.5rem 0;
+  padding: 1rem;
+  color: black;
+  text-decoration: none;
 }
 
+.backButton:hover {
+  cursor: pointer;
+  padding: 1rem;
+  color: black !important;
+  text-decoration: underline;
+  background-color: #eee;
+}
+
+.backButton a:hover {
+  color: black;
+}
 /* Overlay */
 .overlay {
   position: fixed;
@@ -316,7 +345,7 @@
 
 /* Additional Hover Effects for Interactions */
 .mobileNavItem:hover {
-  background-color: #f0f0f0;
+  background-color: #eee;
 }
 
 .backButton:hover {

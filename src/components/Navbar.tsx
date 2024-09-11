@@ -1,5 +1,3 @@
-
-
 'use client'
 
 import React, { useState, useEffect, MouseEvent } from 'react';
@@ -17,6 +15,7 @@ const Navbar = () => {
   const [mobileNavVisible, setMobileNavVisible] = useState(false); // Mobile nav state
   const [mobileCollectionsVisible, setMobileCollectionsVisible] = useState(false); // Mobile collections toggle
   const [submenuVisible, setSubmenuVisible] = useState(false); // Submenu state
+  const [mobileStoryVisible, setMobileStoryVisible] = useState(false); // Mobile "Our Story" toggle
 
   // Media query breakpoint (47rem = 752px)
   const mobileBreakpoint = 752;
@@ -43,7 +42,7 @@ const Navbar = () => {
   const collectionsLinks = collections.map((collection, index) => {
     const slug = collection.toLowerCase().replace(/\s+/g, '-');
     return (
-      <div key={index} onClick={() => closeMobileNav()}>
+      <div className={styles.collecs}key={index} onClick={() => closeMobileNav()}>
         <Link href={`/collections/${slug}`}>{collection}</Link>
       </div>
     );
@@ -82,16 +81,25 @@ const Navbar = () => {
   const toggleMobileNav = () => {
     setMobileNavVisible(!mobileNavVisible);
     setSubmenuVisible(false); // Reset the submenu if the mobile nav is closed
+    setMobileStoryVisible(false); // Reset "Our Story" submenu when mobile nav is closed
   };
 
   const closeMobileNav = () => {
     setMobileNavVisible(false);
     setSubmenuVisible(false); // Close submenu when closing mobile nav
+    setMobileStoryVisible(false); // Close "Our Story" submenu when closing mobile nav
   };
 
   // Toggle collections in mobile view
   const toggleMobileCollections = () => {
     setSubmenuVisible(!submenuVisible);
+    setMobileStoryVisible(false); // Close "Our Story" submenu when collections submenu is open
+  };
+
+  // Toggle "Our Story" submenu in mobile view
+  const toggleMobileStory = () => {
+    setMobileStoryVisible(!mobileStoryVisible);
+    setSubmenuVisible(false); // Close collections submenu when "Our Story" submenu is open
   };
 
   // Close the mobile nav automatically if the viewport width exceeds 752px (47rem)
@@ -100,6 +108,7 @@ const Navbar = () => {
       if (window.innerWidth > mobileBreakpoint) {
         setMobileNavVisible(false); // Close the mobile nav
         setSubmenuVisible(false);   // Close the submenu as well
+        setMobileStoryVisible(false); // Close "Our Story" submenu
       }
     };
 
@@ -173,19 +182,31 @@ const Navbar = () => {
 
       {/* Mobile Nav */}
       <div className={`${styles.mobileNav} ${mobileNavVisible ? styles.mobileNavActive : ''}`}>
-        {!submenuVisible ? (
+        {!submenuVisible && !mobileStoryVisible ? (
           <>
             <div onClick={closeMobileNav} className={styles.mobileNavItem}>Shop All</div>
             <div onClick={toggleMobileCollections} className={styles.mobileNavItem}>
               Collections
             </div>
-            <div onClick={closeMobileNav} className={styles.mobileNavItem}>Our Story</div>
+            <div onClick={toggleMobileStory} className={styles.mobileNavItem}>
+              About
+            </div>
             <div onClick={closeMobileNav} className={styles.mobileNavItem}>Contact</div>
           </>
+        ) : submenuVisible ? (
+          <div className={styles.submenu}>
+            <div className={styles.backButton} onClick={toggleMobileCollections}>← Collections</div>
+            {collectionsLinks}
+          </div>
         ) : (
           <div className={styles.submenu}>
-            <div className={styles.backButton} onClick={toggleMobileCollections}>← Back</div>
-            {collectionsLinks}
+            <div className={styles.backButton} onClick={toggleMobileStory}>← About</div>
+            <div onClick={closeMobileNav} className={styles.collecs}>
+              <Link href='/pages/about'>Our Story</Link>
+            </div>
+            <div onClick={closeMobileNav} className={styles.collecs}>
+              <Link href='/pages/contact'>Contact</Link>
+            </div>
           </div>
         )}
       </div>
