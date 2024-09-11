@@ -1,3 +1,5 @@
+
+
 'use client'
 
 import React, { useState, useEffect, MouseEvent } from 'react';
@@ -14,6 +16,7 @@ const Navbar = () => {
   const { cart } = useCart(); // Use the cart context
   const [mobileNavVisible, setMobileNavVisible] = useState(false); // Mobile nav state
   const [mobileCollectionsVisible, setMobileCollectionsVisible] = useState(false); // Mobile collections toggle
+  const [submenuVisible, setSubmenuVisible] = useState(false); // Submenu state
 
   // Media query breakpoint (47rem = 752px)
   const mobileBreakpoint = 752;
@@ -40,9 +43,9 @@ const Navbar = () => {
   const collectionsLinks = collections.map((collection, index) => {
     const slug = collection.toLowerCase().replace(/\s+/g, '-');
     return (
-      <Link key={index} href={`/collections/${slug}`}>
-        {collection}
-      </Link>
+      <div key={index} onClick={() => closeMobileNav()}>
+        <Link href={`/collections/${slug}`}>{collection}</Link>
+      </div>
     );
   });
 
@@ -78,15 +81,17 @@ const Navbar = () => {
   // Mobile menu toggle functionality
   const toggleMobileNav = () => {
     setMobileNavVisible(!mobileNavVisible);
+    setSubmenuVisible(false); // Reset the submenu if the mobile nav is closed
   };
 
   const closeMobileNav = () => {
     setMobileNavVisible(false);
+    setSubmenuVisible(false); // Close submenu when closing mobile nav
   };
 
   // Toggle collections in mobile view
   const toggleMobileCollections = () => {
-    setMobileCollectionsVisible(!mobileCollectionsVisible);
+    setSubmenuVisible(!submenuVisible);
   };
 
   // Close the mobile nav automatically if the viewport width exceeds 752px (47rem)
@@ -94,6 +99,7 @@ const Navbar = () => {
     const handleResize = () => {
       if (window.innerWidth > mobileBreakpoint) {
         setMobileNavVisible(false); // Close the mobile nav
+        setSubmenuVisible(false);   // Close the submenu as well
       }
     };
 
@@ -115,6 +121,7 @@ const Navbar = () => {
           <Link href='/'>
             <img className={styles.logo} src="/static/pugtatoes-logo.svg" alt="Pugtatoes" loading="eager" />
           </Link>
+          {/* desktop nav */}
           <ul>
             <Link href="/collections">
               <li className={styles.menu_item}>Shop All</li>
@@ -166,19 +173,21 @@ const Navbar = () => {
 
       {/* Mobile Nav */}
       <div className={`${styles.mobileNav} ${mobileNavVisible ? styles.mobileNavActive : ''}`}>
-        <div onClick={closeMobileNav}>Shop All</div>
-
-        {/* Toggle collections under the Collections link */}
-        <div onClick={toggleMobileCollections} className={styles.mobileNavItem}>
-          Collections
-          {mobileCollectionsVisible && (
-            <div className={styles.mobileDropdownContent}>
-              {collectionsLinks}
+        {!submenuVisible ? (
+          <>
+            <div onClick={closeMobileNav} className={styles.mobileNavItem}>Shop All</div>
+            <div onClick={toggleMobileCollections} className={styles.mobileNavItem}>
+              Collections
             </div>
-          )}
-        </div>
-        <div onClick={closeMobileNav}>Our Story</div>
-        <div onClick={closeMobileNav}>Contact</div>
+            <div onClick={closeMobileNav} className={styles.mobileNavItem}>Our Story</div>
+            <div onClick={closeMobileNav} className={styles.mobileNavItem}>Contact</div>
+          </>
+        ) : (
+          <div className={styles.submenu}>
+            <div className={styles.backButton} onClick={toggleMobileCollections}>← Back</div>
+            {collectionsLinks}
+          </div>
+        )}
       </div>
     </>
   );

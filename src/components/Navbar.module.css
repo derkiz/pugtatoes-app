@@ -1,26 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Poppins:wght@300;400&display=swap');
 
+
+/* General Navigation Styles */
+.nav {
+  padding: 2rem;
+  background-color: white;
+}
+
+.nav_container {
+  display: flex;
+  margin: auto;
+  justify-content: left;
+  max-width: 1700px;
+}
+
 .menu_container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.menu_container:hover {
-  cursor: pointer;
-  text-decoration: underline;
+
+
+.mobile_menu_icon {
+  display: none;
 }
 
-.seperator {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;    
-}
-
-.cart {
-  width: 1.25rem;
-  transition: transform 0.1s ease-in-out;
+.mobile_menu_icon_2 {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+  margin-bottom: auto;
+  gap: 1rem;
+  margin-left: auto;
 }
 
 .cart_container {
@@ -29,10 +41,17 @@
   align-items: center;
 }
 
+.cart {
+  width: 1.25rem;
+  transition: transform 0.1s ease-in-out;
+}
+
+.cart:hover {
+  transform: scale(1.1);
+}
+
 .cart_count {
   position: absolute;
-  font-family: monospace;
-  font-weight: 600;
   top: -5px; 
   right: -7px; 
   background-color: #000; 
@@ -46,85 +65,11 @@
   font-size: 12px; 
 }
 
-.cart:hover,
-.nav_icon_2:hover {
-  transform: scale(1.1);
-}
-
-.nav_icon_2 {
-  width: 1.45rem;
-  transition: transform 0.1s ease-in-out;
-}
-
-.menu_item {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;    
-}
-
-.mobile_menu_icon {
-  display: none;
-}
-
-.mobile_menu_icon_2 {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: auto;
-  margin-bottom: auto;
-  gap: 1.00rem;
-  margin-left: auto;
-}
-
-.nav {
-  padding: 2rem;
-  background-color: white;
-}
-
-.nav_container {
-  display: flex;
-  margin: auto;
-  justify-content: left;
-  max-width: 1700px;
-}
-
-.nav_container a {
-  display: flex;
-  text-decoration: none;
-  color: inherit;
-}
-
-.nav_container a:hover {
-  text-decoration: underline;
-}
-
-.nav_container ul {
-  font-family: 'Anonymous Pro', monospace;
-  display: flex;
-  list-style: none;
-  align-items: center;
-  gap: 1rem;
-  color: black;
-}
-
 .logo {
-  width: 9rem;
-  padding-right: 2rem;
+  padding: 0;
 }
 
-.chevron {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.chevron img {
-  width: 0.6rem;
-  height: 0.6rem;
-  padding-right: 0.25rem;
-  padding-left: 0.25rem;
-}
-
+/* Mobile Menu Icon */
 @media (max-width: 47rem) {
   .mobile_menu_icon {
     display: flex;
@@ -134,7 +79,7 @@
   }
 
   .mobile_menu_icon_2 {
-    margin-left: 0px;
+    margin-left: 0;
   }
 
   .nav {
@@ -144,17 +89,9 @@
   .nav_container ul {
     display: none;
   }
-  
-  .nav_icon_2 {
-    display: none;
-  }
 
   .nav_container {
     justify-content: space-between;
-  }
-
-  .logo {
-    padding: 0rem;
   }
 
   .list_svg {
@@ -167,61 +104,16 @@
   }
 }
 
-/* Dropdown styles */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown button {
-  font-family: 'Anonymous Pro', monospace;
-  font-size: 1rem;
-  background: none;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.dropdown button img {
-  width: .6rem;
-  padding: .25rem;
-}
-
-.dropdown_content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 155px;
-  border: 2px solid black;
-  z-index: 1;
-  padding: 1rem 0.5rem;
-  top: 30px;
-}
-
-.dropdown_content a {
-  color: black;
-  padding: 0.5rem;
-  display: block;
-}
-
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
-  text-decoration: none;
-}
-
-/* Default styles for the mobile menu (hidden by default) */
+/* Mobile Navigation Menu */
 .mobileNav {
-  font-family: 'Anonymous Pro', sans-serif;
-  font-size: 1rem;
+  font-family: 'Anonymous Pro', monospace;
   position: fixed;
   top: 0;
-  left: -90%; /* Offscreen initially */
+  left: -100%; /* Initially off-screen */
   width: 70%;
   height: 100vh;
-  background-color: #fff; /* Adjust the background as needed */
+  background-color: #fff;
   z-index: 1000;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
   transition: left 0.3s ease-in-out;
   padding: 20px;
   display: flex;
@@ -231,22 +123,39 @@
 }
 
 .mobileNavActive {
-  left: 0; /* Bring the menu into view */
+  left: 0; /* Slide into view */
 }
 
-/* Mobile menu items styling */
-.mobileNav div {
+.mobileNavItem {
   font-size: 1rem;
   cursor: pointer;
-  padding: 10px 0;
+  padding: 1rem;
 }
 
-.mobile_menu_icon {
+/* Collections Submenu */
+.submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: slideIn 0.3s forwards; /* Slide animation */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.backButton {
   cursor: pointer;
-  z-index: 1100; /* Ensure the menu button is above the menu */
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
 }
 
-/* Overlay for when the menu is active */
+/* Overlay */
 .overlay {
   position: fixed;
   top: 0;
@@ -254,7 +163,7 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 900; /* Under the menu but above the rest of the content */
+  z-index: 900;
   transition: opacity 0.3s ease-in-out;
   opacity: 0;
   pointer-events: none;
@@ -265,15 +174,11 @@
   pointer-events: all;
 }
 
-.mobileDropdownContent {
-  margin-left: 1rem; /* Optional: indent the items under Collections */
-  display: flex;
-  gap: 1rem;
-  flex-direction: column;
+/* Additional Hover Effects for Interactions */
+.mobileNavItem:hover {
+  background-color: #f0f0f0;
 }
 
-.mobileNavItem {
-  cursor: pointer;
-  padding: 10px 0;
-  position: relative;
+.backButton:hover {
+  color: #007bff;
 }
