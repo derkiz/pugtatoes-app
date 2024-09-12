@@ -124,6 +124,34 @@ const Navbar = () => {
           {/* Desktop navigation */}
           <ul>
             {/* Other navigation items */}
+            <Link href="/collections">
+              <li className={styles.menu_item}>Shop All</li>
+            </Link>
+            <li className={styles.seperator}>|</li>
+            <div className={styles.menu_container}>
+              <div className={styles.dropdown} id="myDropdown">
+                <button onClick={toggleDropdown1} style={{ cursor: 'pointer' }}>
+                  Collections
+                  <img src='/static/chevron-down.svg' alt="chevron down" />
+                </button>
+                <div className={styles.dropdown_content} style={{ display: dropdown1Visible ? 'block' : 'none' }}>
+                  {collectionsLinks}
+                </div>
+              </div>
+            </div>
+            <li className={styles.seperator}>|</li>
+            <div className={styles.menu_container}>
+              <div className={styles.dropdown} id="myDropdown2">
+                <button onClick={toggleDropdown2} style={{ cursor: 'pointer' }}>
+                  About
+                  <img src='/static/chevron-down.svg' alt="chevron down" />
+                </button>
+                <div className={styles.dropdown_content} style={{ display: dropdown2Visible ? 'block' : 'none' }}>
+                  <Link href="/pages/about">Our Story</Link>
+                  <Link href="/pages/contact">Contact Us</Link>
+                </div>
+              </div>
+            </div>
           </ul>
           <div className={styles.mobile_menu_icon_2}>
             <Search products={products} />
@@ -146,7 +174,7 @@ const Navbar = () => {
   
       {/* Mobile Navigation Menu */}
       <div className={`${styles.mobileNav} ${mobileNavVisible ? styles.mobileNavActive : ''}`}>
-        
+
         {/* Close button */}
         
         <div className={styles.mobileNavCloseButton} onClick={closeMobileNav}>
