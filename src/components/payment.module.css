@@ -1,5 +1,5 @@
 .parent {
-  height: 400px;
+  height: 600px;
 }
 
 .container {
@@ -7,7 +7,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  height: auto;
+  padding: 3rem;
 }
 
 .title {

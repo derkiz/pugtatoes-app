@@ -4,6 +4,7 @@ import React from 'react';
 import { useCart } from '@/contexts/CartContext';
 import { loadStripe } from '@stripe/stripe-js';
 import styles from './checkout.module.css';
+import { Empty } from '@/components';
 
 // Load Stripe outside of a component’s render to avoid recreating the `stripe` object on every render.
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
@@ -56,12 +57,12 @@ const Checkout = () => {
     <>
       <div className={styles.parent}>
         <div className={styles.container}>
-          <div className={styles.title}>Your cart</div>
             {cart.length === 0 ? (
-              <div className={styles.desc}>Your cart is empty.</div>
+              <Empty />
             ) : (
               <>
                 <ul>
+                <div className={styles.title}>Your cart</div>
                 <div className={styles.categories}>
                   <div className={styles.cat1}>PRODUCT</div>
                   <div className={styles.cat2}>QUANTITY</div>

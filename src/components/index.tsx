@@ -15,6 +15,7 @@ import About from './About'
 import Success from './success'
 import Cancelled from './cancelled'
 import NonoFound from './NonoFound'
+import Empty from './Empty'
 
 export {
   Navbar,
@@ -32,4 +33,5 @@ export {
   Success,
   Cancelled,
   NonoFound,
+  Empty
 }
