@@ -28,12 +28,18 @@
   max-width: 350px;
 }
 
+.footer .footer_column ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
 .footer .footer_column ul li {
   font-family: 'Anonymous Pro', monospace;
   font-size: 1rem;
   color: var(--footer-col);
   list-style: none;
-  padding-bottom: 0.85rem;
+  /* padding-bottom: 1.25rem; */
 }
 
 .footer .footer_column ul li:hover {
