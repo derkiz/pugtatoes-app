@@ -1,10 +1,10 @@
 import React from 'react'
+import { NonoFound } from '@/components'
 
 const NotFound = () => {
   return (
     <>
-      <h2>Page not found</h2>
-      <p>Could not find requested response</p>
+      <NonoFound />
     </>
   )
 }

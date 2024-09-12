@@ -14,6 +14,7 @@ import Contact from './Contact'
 import About from './About'
 import Success from './success'
 import Cancelled from './cancelled'
+import NonoFound from './NonoFound'
 
 export {
   Navbar,
@@ -29,5 +30,6 @@ export {
   Contact,
   About,
   Success,
-  Cancelled
+  Cancelled,
+  NonoFound,
 }

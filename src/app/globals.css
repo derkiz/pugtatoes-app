@@ -9,3 +9,8 @@
   padding: 0;
 }
 
+a {
+  text-decoration: none;  /* Removes underline */
+  color: inherit;         /* Makes the link inherit the text color of the parent element */
+  color: black;
+}

@@ -284,7 +284,9 @@
   font-size: 1rem;
   cursor: pointer;
   padding: 1rem;
+  color: black !important;
 }
+
 .mobileNavItem:hover {
   text-decoration: underline;
 }
@@ -296,6 +298,7 @@
   gap: 20px;
   animation: slideIn 0.3s forwards; /* Slide animation */
 }
+
 
 @keyframes slideIn {
   from {
