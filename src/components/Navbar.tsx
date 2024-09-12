@@ -121,36 +121,9 @@ const Navbar = () => {
           <Link href='/'>
             <img className={styles.logo} src="/static/pugtatoes-logo.svg" alt="Pugtatoes" loading="eager" />
           </Link>
-          {/* desktop nav */}
+          {/* Desktop navigation */}
           <ul>
-            <Link href="/collections">
-              <li className={styles.menu_item}>Shop All</li>
-            </Link>
-            <li className={styles.seperator}>|</li>
-            <div className={styles.menu_container}>
-              <div className={styles.dropdown} id="myDropdown">
-                <button onClick={toggleDropdown1} style={{ cursor: 'pointer' }}>
-                  Collections
-                  <img src='/static/chevron-down.svg' alt="chevron down" />
-                </button>
-                <div className={styles.dropdown_content} style={{ display: dropdown1Visible ? 'block' : 'none' }}>
-                  {collectionsLinks}
-                </div>
-              </div>
-            </div>
-            <li className={styles.seperator}>|</li>
-            <div className={styles.menu_container}>
-              <div className={styles.dropdown} id="myDropdown2">
-                <button onClick={toggleDropdown2} style={{ cursor: 'pointer' }}>
-                  About
-                  <img src='/static/chevron-down.svg' alt="chevron down" />
-                </button>
-                <div className={styles.dropdown_content} style={{ display: dropdown2Visible ? 'block' : 'none' }}>
-                  <Link href="/pages/about">Our Story</Link>
-                  <Link href="/pages/contact">Contact Us</Link>
-                </div>
-              </div>
-            </div>
+            {/* Other navigation items */}
           </ul>
           <div className={styles.mobile_menu_icon_2}>
             <Search products={products} />
@@ -165,14 +138,21 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
-      {/* Overlay */}
+  
+      {/* Overlay for mobile menu */}
       {mobileNavVisible && (
         <div className={`${styles.overlay} ${mobileNavVisible ? styles.overlayActive : ''}`} onClick={closeMobileNav}></div>
       )}
-
-      {/* Mobile Nav */}
+  
+      {/* Mobile Navigation Menu */}
       <div className={`${styles.mobileNav} ${mobileNavVisible ? styles.mobileNavActive : ''}`}>
+        
+        {/* Close button */}
+        
+        <div className={styles.mobileNavCloseButton} onClick={closeMobileNav}>
+          <img src="/static/box-arrow-left.svg" alt="Close menu" />
+        </div>
+        
         {!submenuVisible ? (
           <>
             <div onClick={toggleMobileCollections} className={styles.mobileNavItem}>
@@ -197,6 +177,7 @@ const Navbar = () => {
       </div>
     </>
   );
+  
 };
 
 export default Navbar;

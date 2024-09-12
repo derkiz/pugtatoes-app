@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Poppins:wght@300;400&display=swap');
 
-
-/* nav menu */
-
 .menu_container:hover {
   cursor: pointer;
   text-decoration: underline;
@@ -66,10 +63,6 @@
   user-select: none;    
 }
 
-/* nav menu end */
-
-
-/* General Navigation Styles */
 .nav {
   padding: 2rem;
   background-color: white;
@@ -157,8 +150,6 @@
   padding-left: 0.25rem;
 }
 
-/* drop down styles */
-
 /* Dropdown styles */
 .dropdown {
   position: relative;
@@ -201,9 +192,6 @@
   background-color: #f1f1f1;
   text-decoration: none;
 }
-
-
-/* drop down styles end */
 
 /* Mobile Menu Icon */
 @media (max-width: 47rem) {
@@ -353,4 +341,22 @@
 
 .backButton:hover {
   color: #007bff;
+}
+
+/* close button  */
+
+.mobileNavCloseButton {
+  position: absolute;
+  top: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.mobileNavCloseButton img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.mobileNavCloseButton:hover img {
+  transform: scale(1.1);
 }
