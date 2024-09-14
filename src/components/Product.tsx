@@ -44,6 +44,10 @@ const Product: React.FC<ProductProps> = ({ paramId, STRAPI_APP_BASE_URL }) => {
   const { addToCart } = useCart(); // Use the cart context
   const router = useRouter(); // Use the router for redirection
 
+  // New state for the "Copied to clipboard" popup
+  const [copied, setCopied] = useState<boolean>(false);
+  const [hasShared, setHasShared] = useState<boolean>(false); // State to prevent multiple clicks
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -99,6 +103,25 @@ const Product: React.FC<ProductProps> = ({ paramId, STRAPI_APP_BASE_URL }) => {
     }
   };
 
+  const handleShareClick = async () => {
+    if (product && !hasShared) {
+      // Construct the product URL (you can adjust this as needed)
+      const productUrl = `${window.location.origin}/product/${product.attributes.slug}`;
+      try {
+        await navigator.clipboard.writeText(productUrl);
+        setCopied(true); // Show the copied message
+        setHasShared(true); // Prevent further clicking
+
+        // Hide the message after 2 seconds
+        setTimeout(() => {
+          setCopied(false);
+        }, 2000);
+      } catch (err) {
+        console.error("Failed to copy: ", err);
+      }
+    }
+  };
+
   if (loading) {
     return null;
   }
@@ -134,10 +157,18 @@ const Product: React.FC<ProductProps> = ({ paramId, STRAPI_APP_BASE_URL }) => {
             </div>
             <div className={styles.add_to_cart} onClick={handleAddToCart}>Add to cart</div>
             <div className={styles.buy_now} onClick={handleBuyNow}>Buy now</div>
-            <div className={styles.share}>
+
+            {/* Share button */}
+            <div
+              className={`${styles.share} ${hasShared ? styles.disabled : ''}`} // Add disabled class if already shared
+              onClick={handleShareClick}
+              style={{ pointerEvents: hasShared ? 'none' : 'auto' }} // Disable further clicking
+            >
               <img src='/static/upload.svg' alt='share.svg'></img>
               <div className={styles.miscdesc}>Share</div>
             </div>
+
+            {copied && <div className={styles.copiedPopup}>Copied to clipboard!</div>}
           </div>
         </div>
       </div>

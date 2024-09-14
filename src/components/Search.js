@@ -96,7 +96,7 @@ const Search = ({ products }) => {
                         </Link>
                       ))
                     ) : (
-                      <div className={styles.noResults}>No results found</div>
+                      <div className={styles.noResults}>No results found.</div>
                     )}
                   </div>
                   <div className={styles.searchResultItem}>Search results for: "{searchQuery}"</div>

@@ -16,7 +16,7 @@
 }
 
 .product {
-  width: 45%;
+  width: 35%;
 }
 
 .product img {
@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: column;
   /* outline: 1px solid red; */
-  width: 55%;
+  width: 65%;
 }
 
 .title {
@@ -106,7 +106,8 @@
 .miscdesc {
   font-family: 'Anonymous Pro', monospace;
   color: var(--secondary-col);
-  font-size: 0.85rem;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .share {
@@ -159,4 +160,35 @@
   .product {
   width: 100%;
   }
+}
+
+/* share */
+
+.copiedPopup {
+  font-family: 'Anonymous Pro', sans-serif;
+  position: fixed;
+  top: 1rem;
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust to exactly center */
+  background-color: black;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  animation: fadein 0.5s, fadeout 0.5s 1.5s;
+}
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeout {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
 }
