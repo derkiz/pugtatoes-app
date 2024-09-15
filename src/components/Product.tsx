@@ -9,6 +9,7 @@ import { useCart } from '@/contexts/CartContext';
 interface ProductData {
   id: number;
   attributes: {
+    description: string,
     slug: string;
     title: string;
     price: number;
@@ -140,13 +141,11 @@ const Product: React.FC<ProductProps> = ({ paramId, STRAPI_APP_BASE_URL }) => {
           <div className={styles.product_details}>
             <div className={styles.title}>{product.attributes.title}</div>
             <div className={styles.desc_price}>€{product.attributes.price}</div>
+            {/* modify under */}
             <div className={styles.desc}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-              Sed do eiusmod tempor incididunt ut labore et dolore 
-              magna aliqua. Ut enim ad minim veniam, quis nostrud 
-              exercitation ullamco laboris nisi ut aliquip ex ea 
-              commodo consequat.
+              {product.attributes.description}
             </div>
+              {/* modify end */}
             <div className={styles.miscdesc}>Quantity</div>
             <div className={styles.amount}>
               <img src='/static/dash.svg' onClick={decrementQuantity}></img>
