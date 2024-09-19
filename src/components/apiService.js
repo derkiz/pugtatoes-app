@@ -1,7 +1,8 @@
 // apiService.js
 const fetchProducts = async () => {
   try {
-    const response = await fetch('http://localhost:1337/api/products?populate=image', {
+    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL;  // Use the env variable here
+    const response = await fetch(`${baseUrl}/api/products?populate=image`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
