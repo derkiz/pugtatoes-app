@@ -23,8 +23,8 @@ export async function POST(request: NextRequest) {
         quantity: item.quantity,
       })),
       mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_HOST}/success`, // Update to use NEXT_PUBLIC_HOST
-      cancel_url: `${process.env.NEXT_PUBLIC_HOST}/cancel`,   // Update to use NEXT_PUBLIC_HOST
+      success_url: `https://${process.env.NEXT_PUBLIC_HOST}/success`, // Update to use NEXT_PUBLIC_HOST
+      cancel_url: `https://${process.env.NEXT_PUBLIC_HOST}/cancel`,   // Update to use NEXT_PUBLIC_HOST
     });
 
     return NextResponse.json({ sessionId: session.id });
