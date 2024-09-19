@@ -4,11 +4,11 @@ import { All } from '@/components'
 
 const Collections = () => {
 
-  const STRAPI_APP_BASE_URL = process.env.STRAPI_APP_BASE_URL || 'failed';
+  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL || 'Failed';
 
   return (
     <>
-      <All  STRAPI_APP_BASE_URL={STRAPI_APP_BASE_URL}/>
+      <All  STRAPI_APP_BASE_URL={baseUrl}/>
     </>
 
   )
