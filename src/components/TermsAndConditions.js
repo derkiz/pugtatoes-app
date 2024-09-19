@@ -1,4 +1,3 @@
-// terms-and-conditions.js //
 import React from 'react';
 import styles from './common-style.module.css';
 
@@ -13,7 +12,7 @@ const TermsAndConditions = () => {
           <p className={styles.date}><strong>Last Updated:</strong> August 8, 2024</p>
 
           <p className={styles.paragraph}>
-            Welcome to Pugatoes. By accessing or using our website <a href="https://www.pugtatoes.com" className={styles.link}>www.pugtatoes.com</a> ("Site"), you agree to comply with and be bound by the following terms and conditions ("Terms"). Please review these Terms carefully before using the Site.
+            Welcome to Pugatoes. By accessing or using our website <a href="https://www.pugtatoes.com" className={styles.link}>www.pugtatoes.com</a> (&quot;Site&quot;), you agree to comply with and be bound by the following terms and conditions (&quot;Terms&quot;). Please review these Terms carefully before using the Site.
           </p>
 
           <h2 className={styles.sectionTitle}>1. Acceptance of Terms</h2>
@@ -23,7 +22,7 @@ const TermsAndConditions = () => {
 
           <h2 className={styles.sectionTitle}>2. Use of the Site</h2>
           <p className={styles.paragraph}>
-            You agree to use the Site only for lawful purposes and in a way that does not infringe the rights of, restrict, or inhibit anyone else's use and enjoyment of the Site. Prohibited behavior includes harassing or causing distress or inconvenience to any other user, transmitting obscene or offensive content, or disrupting the normal flow of dialogue on the Site.
+            You agree to use the Site only for lawful purposes and in a way that does not infringe the rights of, restrict, or inhibit anyone else&apos;s use and enjoyment of the Site. Prohibited behavior includes harassing or causing distress or inconvenience to any other user, transmitting obscene or offensive content, or disrupting the normal flow of dialogue on the Site.
           </p>
 
           <h2 className={styles.sectionTitle}>3. Intellectual Property</h2>
