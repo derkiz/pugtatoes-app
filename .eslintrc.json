@@ -1,3 +1,17 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "no-console": "off",          // Disable the no-console rule
+    "react/react-in-jsx-scope": "off", // Disable React in JSX scope rule
+    "no-unused-vars": "warn",     // Set to warning level for unused variables
+    "semi": ["error", "always"]   // Ensure semi-colons are always used
+  },
+  "overrides": [
+    {
+      "files": ["pages/**/*.js"],  // Apply these rules to files in the pages directory
+      "rules": {
+        "no-console": "off"  // Disable no-console rule specifically for files in the pages directory
+      }
+    }
+  ]
 }
