@@ -9,6 +9,10 @@ export async function POST(request: NextRequest) {
       throw new Error('Invalid or missing items');
     }
 
+    // Extract the origin from the request headers
+    const origin = request.headers.get('origin') || 'http://localhost:3000'; // Fallback to localhost for local development
+
+
     // Create a Checkout Session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -23,8 +27,8 @@ export async function POST(request: NextRequest) {
         quantity: item.quantity,
       })),
       mode: 'payment',
-      success_url: `https://${process.env.NEXT_PUBLIC_HOST}/success`, // Update to use NEXT_PUBLIC_HOST
-      cancel_url: `https://${process.env.NEXT_PUBLIC_HOST}/cancel`,   // Update to use NEXT_PUBLIC_HOST
+      success_url: `${origin}/success`,
+      cancel_url: `${origin}/cancel`,
     });
 
     return NextResponse.json({ sessionId: session.id });
