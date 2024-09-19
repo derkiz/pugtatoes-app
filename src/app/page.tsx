@@ -9,7 +9,7 @@ const Page = () => {
     <CartProvider>
       <div>
         <Cta />
-        <Bestsellers STRAPI_APP_BASE_URL={STRAPI_APP_BASE_URL} />
+        <Bestsellers />
       </div>
     </CartProvider>
   );
