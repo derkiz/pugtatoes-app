@@ -4,7 +4,7 @@ import React from 'react';
 import styles from './Bestsellers.module.css';
 import Link from 'next/link';
 
-const Cards = async ({ collectionId, STRAPI_APP_BASE_URL }) => {
+const Cards = async ({ collectionId }) => {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL;
     const response = await fetch(`${baseUrl}/api/products?populate=image`);
