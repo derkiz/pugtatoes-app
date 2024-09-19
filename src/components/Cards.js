@@ -6,7 +6,8 @@ import Link from 'next/link';
 
 const Cards = async ({ collectionId, STRAPI_APP_BASE_URL }) => {
   try {
-    const response = await fetch('http://localhost:1337/api/products?populate=image');
+    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL;
+    const response = await fetch(`${baseUrl}/api/products?populate=image`);
     const { data } = await response.json();
     // Filter products based on collectionId
     const filteredData = data.filter(product => product.attributes.collection === collectionId);
@@ -18,7 +19,7 @@ const Cards = async ({ collectionId, STRAPI_APP_BASE_URL }) => {
             {filteredData.map(product => (
               <Link className={styles.card} href={`/products/${product.attributes.slug}`} key={product.id}>
                 <div className={styles.card_image}>
-                  <img src={STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url} alt={product.attributes.title}/>
+                  <img src={product.attributes.image.data[0].attributes.url} alt={product.attributes.title}/>
                 </div>
                 <div className={styles.chead}>{product.attributes.title}</div>
                 <div className={styles.cdesc}>€{product.attributes.price}</div>

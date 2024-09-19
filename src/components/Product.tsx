@@ -29,7 +29,8 @@ interface ProductProps {
 
 const getProductDetails = async (): Promise<ProductData[]> => {
   try {
-    const response = await fetch("http://localhost:1337/api/products?populate=image");
+    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL;
+    const response = await fetch(`${baseUrl}/api/products?populate=image`);
     const { data } = await response.json();
     return data;
   } catch (error) {
@@ -84,7 +85,7 @@ const Product: React.FC<ProductProps> = ({ paramId, STRAPI_APP_BASE_URL }) => {
         id: product.id,
         title: product.attributes.title,
         price: product.attributes.price,
-        imageUrl: STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url,
+        imageUrl: product.attributes.image.data[0].attributes.url,
         quantity,
       });
     }
@@ -97,7 +98,7 @@ const Product: React.FC<ProductProps> = ({ paramId, STRAPI_APP_BASE_URL }) => {
         id: product.id,
         title: product.attributes.title,
         price: product.attributes.price,
-        imageUrl: STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url,
+        imageUrl: product.attributes.image.data[0].attributes.url,
         quantity,
       });
       router.push('/checkout'); // Redirect to the checkout page
@@ -136,7 +137,7 @@ const Product: React.FC<ProductProps> = ({ paramId, STRAPI_APP_BASE_URL }) => {
       <div className={styles.flex_container}>
         <div className={styles.product_container}>
           <div className={styles.product}>
-            <img src={STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}></img>
+            <img src={product.attributes.image.data[0].attributes.url}></img>
           </div>
           <div className={styles.product_details}>
             <div className={styles.title}>{product.attributes.title}</div>
