@@ -97,7 +97,7 @@ const All = ({ STRAPI_APP_BASE_URL }) => {
                 <img src={product.attributes.image.data[0].attributes.url} alt={product.attributes.title} />
               </div>
               <div className={styles.chead}>{product.attributes.title}</div>
-              <div className={styles.cdesc}>€{product.attributes.price}</div>
+              <div className={styles.cdesc}>${product.attributes.price}</div>
             </Link>
           ))}
         </div>

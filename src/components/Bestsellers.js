@@ -22,7 +22,7 @@ const Bestsellers = async () => {
                   <img src={product.attributes.image.data[0].attributes.url} alt={product.attributes.title}/>
                 </div>
                 <div className={styles.chead}>{product.attributes.title}</div>
-                <div className={styles.cdesc}>€{product.attributes.price}</div>
+                <div className={styles.cdesc}>${product.attributes.price}</div>
               </Link>
             ))}
           </div>
