@@ -9,8 +9,10 @@ const About = () => {
           <div className={styles.box}>
             <img src="/static/about-section.png" alt="Background" />
             <div className={styles.innerBox}>
+              <div className={styles.innerText}>
               Our mission is to create distinctive, well-designed 
-              art that brings personality and style to your space. 
+              art that brings personality and style to your space.
+              </div>
             </div>
           </div>
           <div className={styles.title} style={{ marginBottom:'2rem', marginTop: '2rem'}}>Our values</div>
