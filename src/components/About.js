@@ -15,7 +15,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className={styles.title} style={{ marginBottom:'2rem', marginTop: '2rem'}}>Our values</div>
+          <div className={styles.title}>Our values</div>
           <div className={styles.value_points}>
             <div className={styles.item}>
               <img src='/static/membrane.png' loading='eager' alt="Membrane" />

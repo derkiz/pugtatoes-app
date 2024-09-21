@@ -13,15 +13,15 @@
   }
   25% {
     transform: scale(1.075) rotate(-2deg);
-    filter: drop-shadow(0 8px 5px rgba(0, 0, 0, 0.2)); /* Shadow appears */
+    filter: drop-shadow(0 7px 2px rgba(0, 0, 0, 0.2)); /* Shadow appears */
   }
   50% {
     transform: scale(1.075) rotate(2deg);
-    filter: drop-shadow(0 8px 5px rgba(0, 0, 0, 0.25)); /* Shadow fully visible */
+    filter: drop-shadow(0 7px 2px rgba(0, 0, 0, 0.25)); /* Shadow fully visible */
   }
   75% {
     transform: scale(1.075) rotate(-2deg);
-    filter: drop-shadow(0 8px 5px rgba(0, 0, 0, 0.25)); /* Shadow remains */
+    filter: drop-shadow(0 7px 2px rgba(0, 0, 0, 0.25)); /* Shadow remains */
   }
   100% {
     transform: scale(1) rotate(0deg);
