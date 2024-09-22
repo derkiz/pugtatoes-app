@@ -6,6 +6,7 @@
   padding-left: 2rem;
   padding-right: 2rem;
   max-width: 1700px;
+  padding-bottom: 2rem;
 }
 
 .image_element {
@@ -88,7 +89,6 @@
     align-items: center;
     padding-left: 1rem;
     padding-right: 1rem;
-    padding-bottom: 1rem;
   }
 
   .image_element {
