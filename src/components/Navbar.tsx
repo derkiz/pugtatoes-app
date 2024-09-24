@@ -13,7 +13,6 @@ const Navbar = () => {
   const [products, setProducts] = useState<any[]>([]);
   const { cart } = useCart(); // Use the cart context
   const [mobileNavVisible, setMobileNavVisible] = useState(false); // Mobile nav state
-  const [mobileCollectionsVisible, setMobileCollectionsVisible] = useState(false); // Mobile collections toggle
   const [submenuVisible, setSubmenuVisible] = useState(false); // Submenu state
 
   // Media query breakpoint (47rem = 752px)
