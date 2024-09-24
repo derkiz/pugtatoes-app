@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import React, { useState, useEffect, MouseEvent } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './Navbar.module.css';
 import Link from 'next/link';
 import { fetchProducts } from './apiService';
@@ -8,12 +8,12 @@ import Search from './Search';
 import { useCart } from '@/contexts/CartContext';
 
 const Navbar = () => {
-  const [dropdown1Visible, setDropdown1Visible] = useState(false);
-  const [dropdown2Visible, setDropdown2Visible] = useState(false);
   const [products, setProducts] = useState<any[]>([]);
   const { cart } = useCart(); // Use the cart context
   const [mobileNavVisible, setMobileNavVisible] = useState(false); // Mobile nav state
   const [submenuVisible, setSubmenuVisible] = useState(false); // Submenu state
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null); // State to track open dropdown
+  const dropdownRefs = useRef<{ [key: string]: HTMLDivElement | null }>({}); // Ref to track dropdown elements
 
   // Media query breakpoint (47rem = 752px)
   const mobileBreakpoint = 752;
@@ -41,41 +41,18 @@ const Navbar = () => {
     const slug = collection.toLowerCase().replace(/\s+/g, '-');
     return (
       <Link href={`/collections/${slug}`} key={index}>
-        <div className={styles.collecs} onClick={() => closeMobileNav()}>
+        <div
+          className={styles.item}
+          onClick={(e) => {
+            e.stopPropagation(); // Prevent closing the dropdown
+            closeMobileNav();
+          }}
+        >
           {collection}
         </div>
       </Link>
     );
   });
-
-  // Dropdown functionality
-  function toggleDropdown1() {
-    setDropdown1Visible(!dropdown1Visible);
-    setDropdown2Visible(false); // Close other dropdown when opening this one
-  }
-
-  function toggleDropdown2() {
-    setDropdown2Visible(!dropdown2Visible);
-    setDropdown1Visible(false); // Close other dropdown when opening this one
-  }
-
-  function handleOutsideClick(event: MouseEvent) {
-    const clickedElement = event.target as HTMLElement;
-    if (!clickedElement.closest('#myDropdown') && dropdown1Visible) {
-      setDropdown1Visible(false);
-    }
-    if (!clickedElement.closest('#myDropdown2') && dropdown2Visible) {
-      setDropdown2Visible(false);
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener('click', handleOutsideClick as unknown as EventListener);
-
-    return () => {
-      window.removeEventListener('click', handleOutsideClick as unknown as EventListener);
-    };
-  }, [dropdown1Visible, dropdown2Visible]);
 
   // Mobile menu toggle functionality
   const toggleMobileNav = () => {
@@ -86,11 +63,7 @@ const Navbar = () => {
   const closeMobileNav = () => {
     setMobileNavVisible(false);
     setSubmenuVisible(false); // Close submenu when closing mobile nav
-  };
-
-  // Toggle collections in mobile view
-  const toggleMobileCollections = () => {
-    setSubmenuVisible(!submenuVisible);
+    setOpenDropdown(null); // Close any open dropdowns
   };
 
   // Close the mobile nav automatically if the viewport width exceeds 752px (47rem)
@@ -99,6 +72,7 @@ const Navbar = () => {
       if (window.innerWidth > mobileBreakpoint) {
         setMobileNavVisible(false); // Close the mobile nav
         setSubmenuVisible(false);   // Close the submenu as well
+        setOpenDropdown(null); // Close any open dropdowns
       }
     };
 
@@ -109,6 +83,34 @@ const Navbar = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  const toggleDropdown = (dropdown: string) => {
+    if (openDropdown === dropdown) {
+      setOpenDropdown(null); // Close if the same dropdown is clicked
+    } else {
+      setOpenDropdown(dropdown); // Open the clicked dropdown
+    }
+  };
+
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const dropdownElement = dropdownRefs.current[openDropdown!];
+      if (dropdownElement && !dropdownElement.contains(event.target as Node)) {
+        setOpenDropdown(null); // Close the dropdown if clicking outside
+      }
+    };
+
+    // Attach event listener
+    if (openDropdown) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    // Cleanup event listener on component unmount or when openDropdown changes
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [openDropdown]);
 
   return (
     <>
@@ -121,37 +123,52 @@ const Navbar = () => {
             <img className={styles.logo} src="/static/pugtatoes-logo.svg" alt="Pugtatoes" loading="eager" />
           </Link>
           {/* Desktop navigation */}
-          <ul>
-            {/* Other navigation items */}
-            <Link href="/collections">
-              <li className={styles.menu_item}>Shop All</li>
+          <ul className={styles.navList}>
+            <Link href="/collections" passHref>
+              <li className={styles.menuItem}>Shop All</li>
             </Link>
-            <li className={styles.seperator}>|</li>
-            <div className={styles.menu_container}>
-              <div className={styles.dropdown} id="myDropdown">
-                <button onClick={toggleDropdown1} style={{ cursor: 'pointer' }}>
-                  Collections
-                  <img src='/static/chevron-down.svg' alt="chevron down" />
-                </button>
-                <div className={styles.dropdown_content} style={{ display: dropdown1Visible ? 'block' : 'none' }}>
-                  {collectionsLinks}
-                </div>
+            <li className={styles.separator}>|</li>
+            <div className={styles.dropdown} onClick={() => toggleDropdown('collections')}>
+              <div
+                className={styles.menuItem}
+                ref={el => dropdownRefs.current['collections'] = el} // Assign ref
+              >
+                Collections
+              </div>
+              <div className={`${styles.dropdownContent} ${openDropdown === 'collections' ? styles.show : ''}`}>
+                {collectionsLinks}
               </div>
             </div>
-            <li className={styles.seperator}>|</li>
-            <div className={styles.menu_container}>
-              <div className={styles.dropdown} id="myDropdown2">
-                <button onClick={toggleDropdown2} style={{ cursor: 'pointer' }}>
-                  About
-                  <img src='/static/chevron-down.svg' alt="chevron down" />
-                </button>
-                <div className={styles.dropdown_content} style={{ display: dropdown2Visible ? 'block' : 'none' }}>
-                  <Link href="/pages/about">Our Story</Link>
-                  <Link href="/pages/contact">Contact Us</Link>
-                </div>
+            <li className={styles.separator}>|</li>
+            <div className={styles.dropdown}>
+              <div
+                className={styles.menuItem}
+                onClick={() => toggleDropdown('about')}
+                ref={el => dropdownRefs.current['about'] = el} // Assign ref
+              >
+                About
+              </div>
+              <div className={`${styles.dropdownContent} ${openDropdown === 'about' ? styles.show : ''}`}>
+                <Link href="/pages/about" passHref>
+                  <div
+                    className={styles.item}
+                    onClick={(e) => e.stopPropagation()} // Prevent closing the dropdown
+                  >
+                    Our Story
+                  </div>
+                </Link>
+                <Link href="/pages/contact" passHref>
+                  <div
+                    className={styles.item}
+                    onClick={(e) => e.stopPropagation()} // Prevent closing the dropdown
+                  >
+                    Contact
+                  </div>
+                </Link>
               </div>
             </div>
           </ul>
+          {/* Desktop navigation END */}
           <div className={styles.mobile_menu_icon_2}>
             <Search products={products} />
             <Link href="/checkout">
@@ -165,24 +182,22 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-  
+
       {/* Overlay for mobile menu */}
       {mobileNavVisible && (
         <div className={`${styles.overlay} ${mobileNavVisible ? styles.overlayActive : ''}`} onClick={closeMobileNav}></div>
       )}
-  
+
       {/* Mobile Navigation Menu */}
       <div className={`${styles.mobileNav} ${mobileNavVisible ? styles.mobileNavActive : ''}`}>
-
         {/* Close button */}
-        
         <div className={styles.mobileNavCloseButton} onClick={closeMobileNav}>
           <img src="/static/box-arrow-left.svg" alt="Close menu" />
         </div>
-        
+
         {!submenuVisible ? (
           <>
-            <div onClick={toggleMobileCollections} className={styles.mobileNavItem}>
+            <div onClick={() => setSubmenuVisible(true)} className={styles.mobileNavItem}>
               Collections →
             </div>
             <Link href='/collections'>
@@ -197,14 +212,13 @@ const Navbar = () => {
           </>
         ) : (
           <div className={styles.submenu}>
-            <div className={styles.backButton} onClick={toggleMobileCollections}>← Collections</div>
+            <div className={styles.backButton} onClick={() => setSubmenuVisible(false)}>← Collections</div>
             {collectionsLinks}
           </div>
         )}
       </div>
     </>
   );
-  
 };
 
 export default Navbar;

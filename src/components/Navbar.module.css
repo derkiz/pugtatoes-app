@@ -43,16 +43,12 @@
   color: inherit;
 }
 
-.nav_container a:hover {
-  text-decoration: underline;
-}
-
 .nav_container ul {
   font-family: 'Anonymous Pro', monospace;
   display: flex;
   list-style: none;
   align-items: center;
-  gap: 1rem;
+  gap: .5rem;
   color: black;
 }
 
@@ -134,7 +130,6 @@
 
 .logo {
   width: 9rem;
-  padding-right: 2rem;
 }
 
 .chevron {
@@ -150,48 +145,72 @@
   padding-left: 0.25rem;
 }
 
-/* Dropdown styles */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
+/* DEKSTOP NAVIGATION */
 
-.dropdown button {
-  font-family: 'Anonymous Pro', monospace;
-  font-size: 1rem;
-  background: none;
-  border: none;
+.navList {
+  list-style-type: none;
+  padding: 0rem 1rem;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
-.dropdown button img {
-  width: .6rem;
-  padding: .25rem;
+.menuItem {
+  cursor: pointer;
+  padding: 0 15px;
+  position: relative; /* Needed for positioning dropdowns */
+  transition: transform 0.2s ease; /* Smooth transition for scaling */
 }
 
-.dropdown_content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 155px;
-  border: 2px solid black;
-  z-index: 1;
-  padding: 1rem 0.5rem;
-  top: 30px;
-}
-
-.dropdown_content a {
-  color: black;
-  padding: 0.5rem;
-  display: block;
-}
-
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
+.menuItem:hover {
+  transform: scale(1.15); /* Scale the element slightly on hover */
   text-decoration: none;
 }
+
+.menuItem:hover a {
+  text-decoration: underline;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block; /* Ensure dropdowns are inline */
+}
+
+.dropdownContent {
+  padding: .5rem 0;
+  max-height: 0; /* Start with max-height of 0 */
+  opacity: 0; /* Initial opacity for fade effect */
+  position: absolute;
+  background-color: WHITE;
+  min-width: 180px; /* Fixed width for dropdown */
+  border: 2px solid BLACK;
+  z-index: 1;
+  margin-top: 5px; /* Space above the dropdown */
+  transition: max-height .4s ease, opacity 0.2s ease; /* Smooth transition */
+  overflow: hidden; /* Prevent overflow during transition */
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow effect */
+
+}
+
+.dropdownContent a:hover{
+  text-decoration: underline;
+}
+
+
+
+.dropdownContent.show {
+  max-height: 200px; /* Set a maximum height for the dropdown */
+  opacity: 1; /* Fully visible */
+}
+
+.item {
+  padding: .75rem 1rem;
+  cursor: pointer;
+}
+
+/* DEKSTOP NAVIGATION END */
+
+
 
 /* Mobile Menu Icon */
 @media (max-width: 47rem) {
