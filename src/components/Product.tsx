@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import styles from './Product.module.css';
-import Link from 'next/link';
 import { notFound, useRouter } from 'next/navigation'; // Import useRouter for redirection
 import { useCart } from '@/contexts/CartContext';
 
@@ -24,7 +23,6 @@ interface ProductData {
 
 interface ProductProps {
   paramId: string;
-  STRAPI_APP_BASE_URL: string;
 }
 
 const getProductDetails = async (): Promise<ProductData[]> => {
@@ -39,7 +37,7 @@ const getProductDetails = async (): Promise<ProductData[]> => {
   }
 };
 
-const Product: React.FC<ProductProps> = ({ paramId, STRAPI_APP_BASE_URL }) => {
+const Product: React.FC<ProductProps> = ({ paramId }) => {
   const [product, setProduct] = useState<ProductData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [quantity, setQuantity] = useState<number>(1); // State to store quantity
