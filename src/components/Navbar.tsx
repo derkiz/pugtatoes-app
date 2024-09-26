@@ -13,6 +13,7 @@ const Navbar = () => {
   const { cart } = useCart(); // Use the cart context
   const [mobileNavVisible, setMobileNavVisible] = useState(false); // Mobile nav state
   const [submenuVisible, setSubmenuVisible] = useState(false); // Submenu state
+  const [submenuExiting, setSubmenuExiting] = useState(false); // State for submenu exiting
   const [openDropdown, setOpenDropdown] = useState<string | null>(null); // State to track open dropdown
   const dropdownRefs = useRef<{ [key: string]: HTMLDivElement | null }>({}); // Ref to track dropdown elements
 
@@ -42,13 +43,7 @@ const Navbar = () => {
     const slug = collection.toLowerCase().replace(/\s+/g, '-');
     return (
       <Link href={`/collections/${slug}`} key={index}>
-        <div
-          className={styles.item}
-          onClick={(e) => {
-            e.stopPropagation(); // Prevent closing the dropdown
-            closeMobileNav();
-          }}
-        >
+        <div className={styles.collecs} onClick={() => closeMobileNav()}>
           {collection}
         </div>
       </Link>
@@ -65,6 +60,19 @@ const Navbar = () => {
     setMobileNavVisible(false);
     setSubmenuVisible(false); // Close submenu when closing mobile nav
     setOpenDropdown(null); // Close any open dropdowns
+  };
+
+  // Handle submenu visibility with fade-out effect
+  const handleSubmenuVisibility = (isVisible: boolean) => {
+    if (isVisible) {
+      setSubmenuVisible(true);
+    } else {
+      setSubmenuExiting(true);
+      setTimeout(() => {
+        setSubmenuVisible(false);
+        setSubmenuExiting(false); // Reset after transition
+      }, 300); // Match this duration with the CSS transition time
+    }
   };
 
   // Close the mobile nav automatically if the viewport width exceeds 752px (47rem)
@@ -121,14 +129,14 @@ const Navbar = () => {
             <img className={styles.list_svg} src="/static/list.svg" alt="menu icon" />
           </div>
           <Link href='/'>
-          <Image
-                className={styles.logo}
-                src="/static/pugtatoes-logo-drawn.png"
-                alt="Pugtatoes"
-                loading="eager"
-                width={600} // Set appropriate width
-                height={46} // Set appropriate height
-                priority // Optional: use this prop if you want to preload the image
+            <Image
+              className={styles.logo}
+              src="/static/pugtatoes-logo-drawn.png"
+              alt="Pugtatoes"
+              loading="eager"
+              width={300}
+              height={46}
+              priority // Optional: use this prop if you want to preload the image
             />
             <img className={styles.logoM} src="/static/pugtatoes_mobile_logo.png" alt="Pugtatoes" loading="eager" />
           </Link>
@@ -207,7 +215,7 @@ const Navbar = () => {
 
         {!submenuVisible ? (
           <>
-            <div onClick={() => setSubmenuVisible(true)} className={styles.mobileNavItem}>
+            <div onClick={() => handleSubmenuVisibility(true)} className={styles.mobileNavItem}>
               Collections →
             </div>
             <Link href='/collections'>
@@ -221,13 +229,13 @@ const Navbar = () => {
             </Link>
           </>
         ) : (
-          <div className={styles.submenu}>
-            <div className={styles.backButton} onClick={() => setSubmenuVisible(false)}>← Collections</div>
+          <div className={`${styles.submenu} ${submenuExiting ? styles.submenuExiting : ''}`}>
+            <div className={styles.backButton} onClick={() => handleSubmenuVisibility(false)}>← Collections</div>
             {collectionsLinks}
           </div>
         )}
       </div>
-       {/* Mobile Navigation Menu END*/}
+      {/* Mobile Navigation Menu END */}
     </>
   );
 };

@@ -128,14 +128,16 @@
   font-size: 12px; 
 }
 
+/* Logo styles */
 .logo {
   top: 20px;
   width: 16rem;
-  transition: transform 0.15s ease-in-out; /* Smooth scaling transition */
+  transition: transform 0.15s ease-in-out, filter 0.15s ease-in-out; /* Smooth scaling and filter transition */
 }
 
 .logo:hover {
-  transform: scale(1.05); /* Scale the logo to 1.1 on hover */
+  transform: scale(1.05); /* Scale the logo to 1.05 on hover */
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2)); /* Add a shadow on hover */
 }
 
 .logoM {
@@ -202,6 +204,11 @@
 
 }
 
+.dropdownContent a {
+  padding: .75rem 1rem;
+  cursor: pointer;
+}
+
 .dropdownContent a:hover{
   text-decoration: underline;
 }
@@ -211,11 +218,6 @@
 .dropdownContent.show {
   max-height: 200px; /* Set a maximum height for the dropdown */
   opacity: 1; /* Fully visible */
-}
-
-.item {
-  padding: .75rem 1rem;
-  cursor: pointer;
 }
 
 /* DEKSTOP NAVIGATION END */
@@ -265,18 +267,23 @@
 @keyframes scaleWiggle {
   0% {
     transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0)); /* No shadow */
   }
   25% {
     transform: scale(1.1) rotate(-2deg);
+    filter: drop-shadow(0 7px 3px rgba(0, 0, 0, 0.2)); /* Shadow appears */
   }
   50% {
     transform: scale(1.1) rotate(2deg);
+    filter: drop-shadow(0 7px 3px rgba(0, 0, 0, 0.25)); /* Shadow fully visible */
   }
   75% {
     transform: scale(1.1) rotate(-2deg);
+    filter: drop-shadow(0 7px 3px rgba(0, 0, 0, 0.25)); /* Shadow remains */
   }
   100% {
     transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0)); /* Shadow fades out */
   }
 }
 
@@ -347,16 +354,37 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  animation: slideIn 0.3s forwards; /* Slide animation */
+  animation: slideIn 0.3s forwards; /* Slide animation for entry */
 }
 
+.submenuExiting {
+  animation: slideOut 0.3s forwards, fadeOut .2s forwards; /* Slide out and fade out animations */
+}
 
 @keyframes slideIn {
   from {
-    transform: translateX(100%);
+    transform: translateX(-100%); /* Slide in from the left */
   }
   to {
-    transform: translateX(0);
+    transform: translateX(0); /* Slide into place */
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0); /* Current position */
+  }
+  to {
+    transform: translateX(-100%); /* Slide back to the left */
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1; /* Fully visible */
+  }
+  to {
+    opacity: 0; /* Fully transparent */
   }
 }
 
@@ -368,16 +396,10 @@
 }
 
 .backButton:hover {
-  cursor: pointer;
-  padding: 1rem;
-  color: black !important;
   text-decoration: underline;
   background-color: #eee;
 }
 
-.backButton a:hover {
-  color: black;
-}
 /* Overlay */
 .overlay {
   position: fixed;
@@ -402,16 +424,11 @@
   background-color: #eee;
 }
 
-.backButton:hover {
-  color: #007bff;
-}
-
-/* close button  */
-
+/* Close Button */
 .mobileNavCloseButton {
   position: absolute;
   top: 1rem;
-  left: -0.25;
+  left: 1rem; /* Adjusted for better positioning */
   padding: 1rem;
   cursor: pointer;
 }
@@ -426,4 +443,5 @@
 }
 
 /* 
-END MOBILE */
+END MOBILE NAVIGATION MENU 
+*/
