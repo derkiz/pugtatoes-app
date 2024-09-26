@@ -120,7 +120,8 @@ const Navbar = () => {
             <img className={styles.list_svg} src="/static/list.svg" alt="menu icon" />
           </div>
           <Link href='/'>
-            <img className={styles.logo} src="/static/pugtatoes-logo.svg" alt="Pugtatoes" loading="eager" />
+            <img className={styles.logo} src="/static/pugtatoes-logo-drawn.png" alt="Pugtatoes" loading="eager" />
+            <img className={styles.logoM} src="/static/pugtatoes_mobile_logo.png" alt="Pugtatoes" loading="eager" />
           </Link>
           {/* Desktop navigation */}
           <ul className={styles.navList}>

@@ -129,7 +129,17 @@
 }
 
 .logo {
-  width: 9rem;
+  top: 20px;
+  width: 16rem;
+  transition: transform 0.15s ease-in-out; /* Smooth scaling transition */
+}
+
+.logo:hover {
+  transform: scale(1.05); /* Scale the logo to 1.1 on hover */
+}
+
+.logoM {
+  display: none;
 }
 
 .chevron {
@@ -247,8 +257,42 @@
   }
 
   .logo {
+    display: none;
     padding: 0rem;
   }
+
+/* Define keyframe animation for scale and wiggle */
+@keyframes scaleWiggle {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.1) rotate(-2deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(2deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Logo styles */
+.logoM {
+  display: block;
+  padding: 0rem;
+  width: 5rem;
+  height: auto;
+  transition: transform 0.65s ease-in-out;
+}
+
+/* Add the hover effect */
+.logoM:hover {
+  animation: scaleWiggle 0.65s ease-in-out; /* Apply the wiggle animation on hover */
+}
 
   .collecs {
     padding: 1rem;
