@@ -15,7 +15,7 @@ const Cta = () => {
       </div>
       <div className={styles.element_2}>
         <div className={styles.element_main}>
-          <div className={styles.title}>Explore our collections!</div>
+          <div className={styles.title}>Explore our latest stickers!</div>
           <div className={styles.p_elem} style={{ textAlign:'center' }}>A great gift, a cute collectible, a chubby pug, a silly companion. See our latest festive designs! :-)</div>
           <div className={styles.cta_btn}>
             <Link href="/collections">
