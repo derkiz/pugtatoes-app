@@ -131,7 +131,7 @@ const Navbar = () => {
           <Link href='/'>
             <Image
               className={styles.logo}
-              src="/static/pugtatoes-logo-drawn.png"
+              src="/static/pugtatoes_logo_drawn.png"
               alt="Pugtatoes"
               loading="eager"
               width={300}
