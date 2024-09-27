@@ -130,14 +130,16 @@
 
 /* Logo styles */
 .logo {
-  top: 20px;
-  width: 16rem;
-  transition: transform 0.15s ease-in-out, filter 0.15s ease-in-out; /* Smooth scaling and filter transition */
+  position: absolute;
+  top: 16px;
+  width: 15rem;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .5));
+  transition: transform 1.5s ease;
 }
 
-.logo:hover {
-  transform: scale(1.05); /* Scale the logo to 1.05 on hover */
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2)); /* Add a shadow on hover */
+
+.logo:hover{
+  transform: scale(1.05);
 }
 
 .logoM {
@@ -161,7 +163,7 @@
 
 .navList {
   list-style-type: none;
-  padding: 0rem 1rem;
+  padding-left: 16rem;
   display: flex;
   align-items: center;
 }
