@@ -129,15 +129,7 @@ const Navbar = () => {
             <img className={styles.list_svg} src="/static/list.svg" alt="menu icon" />
           </div>
           <Link href='/'>
-            <Image
-              className={styles.logo}
-              src="/static/pugtatoes_logo.png"
-              alt="Pugtatoes"
-              loading="eager"
-              width={300}
-              height={46}
-              priority // Optional: use this prop if you want to preload the image
-            />
+            <img className={styles.logo} src="/static/pugtatoes_logo.svg"></img>
             <img className={styles.logoM} src="/static/pugtatoes_mobile_logo.png" alt="Pugtatoes" loading="eager" />
           </Link>
           {/* Desktop navigation */}
