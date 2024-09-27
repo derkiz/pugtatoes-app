@@ -17,9 +17,11 @@ const Cta = () => {
         <div className={styles.element_main}>
           <div className={styles.title}>Explore our latest stickers!</div>
           <div className={styles.p_elem} style={{ textAlign:'center' }}>A great gift, a cute collectible, a chubby pug, a silly companion. See our latest festive designs! :-)</div>
-          <div className={styles.cta_btn}>
-            <Link href="/collections">
-              <div>Shop All</div>
+          <div className={styles.btn_parent}>
+            <Link href="/collections">  
+              <div className={styles.cta_btn}>
+                <div>Shop All</div>
+              </div>
             </Link>
           </div>
         </div>
