@@ -52,7 +52,7 @@
   color: black;
 }
 
-.seperator {
+.separator {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -132,13 +132,25 @@
 .logo {
   position: absolute;
   top: 16px;
-  width: 15rem;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .5));
+  width: 7rem;
+  /* filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .5)); */
   transition: transform .1s ease;
 }
 
 
 .logo:hover{
+  transform: scale(1.05);
+}
+
+.logotext {
+  position: absolute;
+  top: 20px;
+  font-family: "Cherry Bomb One";
+  font-size: 1.5rem;
+  transition: transform .05s ease;
+}
+
+.logotext:hover {
   transform: scale(1.05);
 }
 
@@ -163,12 +175,16 @@
 
 .navList {
   list-style-type: none;
-  padding-left: 16rem;
+  padding-left: 9rem;
   display: flex;
   align-items: center;
 }
 
 .menuItem {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   cursor: pointer;
   padding: 0 15px;
   position: relative; /* Needed for positioning dropdowns */

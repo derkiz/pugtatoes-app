@@ -46,7 +46,7 @@ const Footer = () => {
           </div>
           <div className={styles.mobile_menu_icon_3}>
             <div className={styles.footer_image_holder}>
-              <img src="/static/pugtatoes-logo.svg" alt="Pugtatoes Logo"></img>
+              <img src="/static/pugtatoes_logo_font.svg" alt="Pugtatoes Logo"></img>
             </div>
           </div>
         </div>
