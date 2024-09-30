@@ -15,7 +15,9 @@ const Navbar = () => {
   const [submenuVisible, setSubmenuVisible] = useState(false); // Submenu state
   const [submenuExiting, setSubmenuExiting] = useState(false); // State for submenu exiting
   const [openDropdown, setOpenDropdown] = useState<string | null>(null); // State to track open dropdown
-  const dropdownRefs = useRef<{ [key: string]: HTMLDivElement | null }>({}); // Ref to track dropdown elements
+
+  const collectionsRef = useRef<HTMLDivElement | null>(null); // Ref for collections dropdown
+  const aboutRef = useRef<HTMLDivElement | null>(null); // Ref for about dropdown
 
   // Media query breakpoint (47rem = 752px)
   const mobileBreakpoint = 752;
@@ -38,7 +40,7 @@ const Navbar = () => {
 
   const collections = Array.from(new Set(products.map((item: any) => item.attributes.collection)));
 
-  // Map over collections and store them in a constant
+  // Mobile Collection Links
   const collectionsLinks = collections.map((collection, index) => {
     const slug = collection.toLowerCase().replace(/\s+/g, '-');
     return (
@@ -46,6 +48,16 @@ const Navbar = () => {
         <div className={styles.collecs} onClick={() => closeMobileNav()}>
           {collection}
         </div>
+      </Link>
+    );
+  });
+
+  // Desktop Collection Links
+  const desktopCollectionsLinks = collections.map((collection, index) => {
+    const slug = collection.toLowerCase().replace(/\s+/g, '-');
+    return (
+      <Link href={`/collections/${slug}`} key={index}>
+        <div>{collection}</div>
       </Link>
     );
   });
@@ -93,6 +105,7 @@ const Navbar = () => {
     };
   }, []);
 
+  // Function to toggle dropdowns
   const toggleDropdown = (dropdown: string) => {
     if (openDropdown === dropdown) {
       setOpenDropdown(null); // Close if the same dropdown is clicked
@@ -101,21 +114,28 @@ const Navbar = () => {
     }
   };
 
-  // Close dropdowns when clicking outside
+  // New effect for handling clicks outside of dropdowns
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      const dropdownElement = dropdownRefs.current[openDropdown!];
-      if (dropdownElement && !dropdownElement.contains(event.target as Node)) {
-        setOpenDropdown(null); // Close the dropdown if clicking outside
+      if (
+        openDropdown === 'collections' && collectionsRef.current &&
+        !collectionsRef.current.contains(event.target as Node)
+      ) {
+        setOpenDropdown(null); // Close collections dropdown if clicked outside
+      } else if (
+        openDropdown === 'about' && aboutRef.current &&
+        !aboutRef.current.contains(event.target as Node)
+      ) {
+        setOpenDropdown(null); // Close about dropdown if clicked outside
       }
     };
 
-    // Attach event listener
     if (openDropdown) {
       document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
     }
 
-    // Cleanup event listener on component unmount or when openDropdown changes
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -139,41 +159,30 @@ const Navbar = () => {
             </Link>
             <li className={styles.separator}>|</li>
             <div className={styles.dropdown} onClick={() => toggleDropdown('collections')}>
-              <div
-                className={styles.menuItem}
-                ref={el => dropdownRefs.current['collections'] = el} // Assign ref
-              >
+              <div className={styles.menuItem}>
                 Collections
               </div>
-              <div className={`${styles.dropdownContent} ${openDropdown === 'collections' ? styles.show : ''}`}>
-                {collectionsLinks}
+              <div
+                className={`${styles.dropdownContent} ${openDropdown === 'collections' ? styles.show : ''}`}
+                ref={collectionsRef} // Ref for the collections dropdown
+              >
+                {desktopCollectionsLinks}
               </div>
             </div>
             <li className={styles.separator}>|</li>
             <div className={styles.dropdown}>
-              <div
-                className={styles.menuItem}
-                onClick={() => toggleDropdown('about')}
-                ref={el => dropdownRefs.current['about'] = el} // Assign ref
-              >
+              <div className={styles.menuItem} onClick={() => toggleDropdown('about')}>
                 About
               </div>
-              <div className={`${styles.dropdownContent} ${openDropdown === 'about' ? styles.show : ''}`}>
-                <Link href="/pages/about" passHref>
-                  <div
-                    className={styles.item}
-                    onClick={(e) => e.stopPropagation()} // Prevent closing the dropdown
-                  >
-                    Our Story
-                  </div>
+              <div
+                className={`${styles.dropdownContent} ${openDropdown === 'about' ? styles.show : ''}`}
+                ref={aboutRef} // Ref for the about dropdown
+              >
+                <Link href="/pages/about">
+                  <div className={styles.item} onClick={() => setOpenDropdown(null)}>Our Story</div>
                 </Link>
-                <Link href="/pages/contact" passHref>
-                  <div
-                    className={styles.item}
-                    onClick={(e) => e.stopPropagation()} // Prevent closing the dropdown
-                  >
-                    Contact
-                  </div>
+                <Link href="/pages/contact">
+                  <div className={styles.item} onClick={() => setOpenDropdown(null)}>Contact</div>
                 </Link>
               </div>
             </div>
