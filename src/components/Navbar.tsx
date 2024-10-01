@@ -16,8 +16,10 @@ const Navbar = () => {
   const [submenuExiting, setSubmenuExiting] = useState(false); // State for submenu exiting
   const [openDropdown, setOpenDropdown] = useState<string | null>(null); // State to track open dropdown
 
-  const collectionsRef = useRef<HTMLDivElement | null>(null); // Ref for collections dropdown
-  const aboutRef = useRef<HTMLDivElement | null>(null); // Ref for about dropdown
+  const collectionsRef = useRef<HTMLDivElement | null>(null); // Ref for collections dropdown content
+  const collectionsMenuItemRef = useRef<HTMLDivElement | null>(null); // Ref for collections menu item
+  const aboutRef = useRef<HTMLDivElement | null>(null); // Ref for about dropdown content
+  const aboutMenuItemRef = useRef<HTMLDivElement | null>(null); // Ref for about menu item
 
   // Media query breakpoint (47rem = 752px)
   const mobileBreakpoint = 752;
@@ -106,27 +108,43 @@ const Navbar = () => {
   }, []);
 
   // Function to toggle dropdowns
-  const toggleDropdown = (dropdown: string) => {
+  const handleDropdownClick = (dropdown: string) => {
     if (openDropdown === dropdown) {
-      setOpenDropdown(null); // Close if the same dropdown is clicked
+      setOpenDropdown(null); // Close the dropdown if it's already open
     } else {
       setOpenDropdown(dropdown); // Open the clicked dropdown
     }
   };
 
-  // New effect for handling clicks outside of dropdowns
+  const closeDropdown = () => {
+    setOpenDropdown(null); // Close any dropdown
+  };
+
+  // New effect for handling clicks outside of dropdowns (including the menu items)
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node;
+
+      // Close collections dropdown if clicked outside both the menu item and dropdown content
       if (
-        openDropdown === 'collections' && collectionsRef.current &&
-        !collectionsRef.current.contains(event.target as Node)
+        openDropdown === 'collections' &&
+        collectionsRef.current &&
+        collectionsMenuItemRef.current &&
+        !collectionsRef.current.contains(target) &&
+        !collectionsMenuItemRef.current.contains(target)
       ) {
-        setOpenDropdown(null); // Close collections dropdown if clicked outside
-      } else if (
-        openDropdown === 'about' && aboutRef.current &&
-        !aboutRef.current.contains(event.target as Node)
+        setOpenDropdown(null);
+      }
+
+      // Close about dropdown if clicked outside both the menu item and dropdown content
+      else if (
+        openDropdown === 'about' &&
+        aboutRef.current &&
+        aboutMenuItemRef.current &&
+        !aboutRef.current.contains(target) &&
+        !aboutMenuItemRef.current.contains(target)
       ) {
-        setOpenDropdown(null); // Close about dropdown if clicked outside
+        setOpenDropdown(null);
       }
     };
 
@@ -158,20 +176,30 @@ const Navbar = () => {
               <li className={styles.menuItem}>Shop All</li>
             </Link>
             <li className={styles.separator}>|</li>
-            <div className={styles.dropdown} onClick={() => toggleDropdown('collections')}>
-              <div className={styles.menuItem}>
+            <div className={styles.dropdown}>
+              <div
+                className={styles.menuItem}
+                onClick={() => handleDropdownClick('collections')}
+                ref={collectionsMenuItemRef} // Ref for the collections menu item
+              >
                 Collections
               </div>
               <div
                 className={`${styles.dropdownContent} ${openDropdown === 'collections' ? styles.show : ''}`}
                 ref={collectionsRef} // Ref for the collections dropdown
               >
-                {desktopCollectionsLinks}
+                {desktopCollectionsLinks.map((link) => (
+                  <div key={link.key} onClick={closeDropdown}>{link}</div>
+                ))}
               </div>
             </div>
             <li className={styles.separator}>|</li>
             <div className={styles.dropdown}>
-              <div className={styles.menuItem} onClick={() => toggleDropdown('about')}>
+              <div
+                className={styles.menuItem}
+                onClick={() => handleDropdownClick('about')}
+                ref={aboutMenuItemRef} // Ref for the about menu item
+              >
                 About
               </div>
               <div
@@ -179,10 +207,10 @@ const Navbar = () => {
                 ref={aboutRef} // Ref for the about dropdown
               >
                 <Link href="/pages/about">
-                  <div className={styles.item} onClick={() => setOpenDropdown(null)}>Our Story</div>
+                  <div className={styles.item} onClick={closeDropdown}>Our Story</div>
                 </Link>
                 <Link href="/pages/contact">
-                  <div className={styles.item} onClick={() => setOpenDropdown(null)}>Contact</div>
+                  <div className={styles.item} onClick={closeDropdown}>Contact</div>
                 </Link>
               </div>
             </div>
