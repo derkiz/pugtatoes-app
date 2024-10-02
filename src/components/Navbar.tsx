@@ -206,11 +206,11 @@ const Navbar = () => {
                 className={`${styles.dropdownContent} ${openDropdown === 'about' ? styles.show : ''}`}
                 ref={aboutRef} // Ref for the about dropdown
               >
-                <Link href="/pages/about">
-                  <div className={styles.item} onClick={closeDropdown}>Our Story</div>
+                <Link href="/pages/about" onClick={closeDropdown}>
+                  <div className={styles.item}>Our Story</div>
                 </Link>
-                <Link href="/pages/contact">
-                  <div className={styles.item} onClick={closeDropdown}>Contact</div>
+                <Link href="/pages/contact" onClick={closeDropdown}>
+                  <div className={styles.item}>Contact</div>
                 </Link>
               </div>
             </div>
