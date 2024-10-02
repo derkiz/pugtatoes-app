@@ -1,6 +1,7 @@
 // src/app/page.tsx
 import { Cta, Bestsellers } from "@/components";
-import { CartProvider } from "@/contexts/CartContext"; // Ensure the path matches your project structure
+import { CartProvider } from "@/contexts/CartContext";
+import ClientComponents from './ClientComponents'; // Import ClientComponents
 
 const Page = () => {
 
