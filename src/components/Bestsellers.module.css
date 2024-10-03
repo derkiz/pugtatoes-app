@@ -29,6 +29,11 @@
   }
 }
 
+.filter svg {
+  width: 16px;
+  height: 16px;
+}
+
 /* Scale and wiggle effect on hover */
 .card:hover img {
   animation: wiggle 0.65s ease-in-out; /* Start the wiggle animation */

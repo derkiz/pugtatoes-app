@@ -79,7 +79,18 @@ const All = ({ STRAPI_APP_BASE_URL }) => {
             onClick={() => setDropdownOpen(!dropdownOpen)}
           >
             <div>{currentSort}</div>
-            <img src="./static/chevron-down.svg" alt="⇓" loading="eager" />
+            <svg // adds inline svg
+              xmlns="http://www.w3.org/2000/svg" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              stroke-width="2" 
+              stroke-linecap="round" 
+              stroke-linejoin="round">
+              <polyline 
+              points="6 9 12 15 18 9">
+              </polyline>
+            </svg>
             {dropdownOpen && (
               <div className={styles.dropdown_content}>
                 <div className={styles.dropdown_item} onClick={() => handleSort('featured')}>Featured</div>
