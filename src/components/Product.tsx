@@ -106,7 +106,7 @@ const Product: React.FC<ProductProps> = ({ paramId }) => {
   const handleShareClick = async () => {
     if (product && !hasShared) {
       // Construct the product URL (you can adjust this as needed)
-      const productUrl = `${window.location.origin}/product/${product.attributes.slug}`;
+      const productUrl = `${window.location.origin}/products/${product.attributes.slug}`;
       try {
         await navigator.clipboard.writeText(productUrl);
         setCopied(true); // Show the copied message
