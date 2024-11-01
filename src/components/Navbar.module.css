@@ -387,7 +387,7 @@
 }
 
 .submenuExiting {
-  animation: slideOut 0.3s forwards, fadeOut .2s forwards; /* Slide out and fade out animations */
+  animation: slideOut 0.3s forwards;
 }
 
 @keyframes slideIn {
@@ -405,15 +405,6 @@
   }
   to {
     transform: translateX(-100%); /* Slide back to the left */
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1; /* Fully visible */
-  }
-  to {
-    opacity: 0; /* Fully transparent */
   }
 }
 

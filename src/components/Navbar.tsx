@@ -252,6 +252,39 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      {/* Overlay for mobile menu */}
+      {mobileNavVisible && (
+      <div className={`${styles.overlay} ${mobileNavVisible ? styles.overlayActive : ''}`} onClick={closeMobileNav}></div>
+      )}
+      {/* Mobile Navigation Menu */}
+      <div className={`${styles.mobileNav} ${mobileNavVisible ? styles.mobileNavActive : ''}`}>
+        {/* Close button */}
+        <div className={styles.mobileNavCloseButton} onClick={closeMobileNav}>
+          <img src="/static/box-arrow-left.svg" alt="Close menu" />
+        </div>
+        {!submenuVisible ? (
+          <>
+            <div onClick={() => handleSubmenuVisibility(true)} className={styles.mobileNavItem}>
+              Collections →
+            </div>
+            <Link href='/collections'>
+              <div onClick={closeMobileNav} className={styles.mobileNavItem}>Shop All</div>
+            </Link>
+            <Link href='/pages/about'>
+              <div onClick={closeMobileNav} className={styles.mobileNavItem}>Our Story</div>
+            </Link>
+            <Link href='/pages/contact'>
+              <div onClick={closeMobileNav} className={styles.mobileNavItem}>Contact</div>
+            </Link>
+          </>
+        ) : (
+          <div className={`${styles.submenu} ${submenuExiting ? styles.submenuExiting : ''}`}>
+            <div className={styles.backButton} onClick={() => handleSubmenuVisibility(false)}>← Collections</div>
+            {collectionsLinks}
+          </div>
+        )}
+      </div>
+      {/* Mobile Navigation Menu END */}
       <div style={{ height: '80px' }} /> {/* Placeholder with navbar height */}
     </>
   );
