@@ -62,6 +62,17 @@
 .nav {
   padding: 2rem;
   background-color: white;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  box-sizing: border-box; /* Ensures padding doesn’t overflow the viewport */
+}
+
+.hidden {
+  transform: translateY(-100%); /* Move navbar up when hidden */
 }
 
 .nav_container {
