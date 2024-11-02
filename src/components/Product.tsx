@@ -135,7 +135,10 @@ const Product: React.FC<ProductProps> = ({ paramId }) => {
       <div className={styles.flex_container}>
         <div className={styles.product_container}>
           <div className={styles.product}>
-            <img src={product.attributes.image.data[0].attributes.url}></img>
+            <img // Remove env variable when using railway
+                src={`${process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL}${product.attributes.image.data[0].attributes.url}`} 
+                alt={product.attributes.title} 
+              />
           </div>
           <div className={styles.product_details}>
             <div className={styles.title}>{product.attributes.title}</div>
