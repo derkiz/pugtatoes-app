@@ -1,14 +1,14 @@
-'use client'
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import styles from './Product.module.css';
-import { notFound, useRouter } from 'next/navigation'; // Import useRouter for redirection
-import { useCart } from '@/contexts/CartContext';
+import React, { useEffect, useState } from "react";
+import styles from "./Product.module.css";
+import { notFound, useRouter } from "next/navigation"; // Import useRouter for redirection
+import { useCart } from "@/contexts/CartContext";
 
 interface ProductData {
   id: number;
   attributes: {
-    description: string,
+    description: string;
     slug: string;
     title: string;
     price: number;
@@ -52,7 +52,7 @@ const Product: React.FC<ProductProps> = ({ paramId }) => {
     const fetchData = async () => {
       try {
         const products = await getProductDetails();
-        const product = products.find(p => p.attributes.slug === paramId);
+        const product = products.find((p) => p.attributes.slug === paramId);
         if (product) {
           setProduct(product);
         } else {
@@ -83,7 +83,7 @@ const Product: React.FC<ProductProps> = ({ paramId }) => {
         id: product.id,
         title: product.attributes.title,
         price: product.attributes.price,
-        imageUrl: product.attributes.image.data[0].attributes.url,
+        imageUrl: `${process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL}${product.attributes.image.data[0].attributes.url}`, // Add base URL here
         quantity,
       });
     }
@@ -96,10 +96,10 @@ const Product: React.FC<ProductProps> = ({ paramId }) => {
         id: product.id,
         title: product.attributes.title,
         price: product.attributes.price,
-        imageUrl: product.attributes.image.data[0].attributes.url,
+        imageUrl: `${process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL}${product.attributes.image.data[0].attributes.url}`, // Add base URL here
         quantity,
       });
-      router.push('/checkout'); // Redirect to the checkout page
+      router.push("/checkout"); // Redirect to the checkout page
     }
   };
 
@@ -135,37 +135,39 @@ const Product: React.FC<ProductProps> = ({ paramId }) => {
       <div className={styles.flex_container}>
         <div className={styles.product_container}>
           <div className={styles.product}>
-            <img // Remove env variable when using railway
-                src={`${process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL}${product.attributes.image.data[0].attributes.url}`} 
-                alt={product.attributes.title} 
-              />
+            <img
+              src={`${process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL}${product.attributes.image.data[0].attributes.url}`}
+              alt={product.attributes.title}
+            />
           </div>
           <div className={styles.product_details}>
             <div className={styles.title}>{product.attributes.title}</div>
             <div className={styles.desc_price}>€{product.attributes.price}</div>
             {/* modify under */}
-            <div className={styles.desc}>
-              {product.attributes.description}
-            </div>
-              {/* modify end */}
+            <div className={styles.desc}>{product.attributes.description}</div>
+            {/* modify end */}
             <div className={styles.miscdesc}>Quantity</div>
             <div className={styles.amount}>
-              <img src='/static/dash.svg' onClick={decrementQuantity}></img>
+              <img src="/static/dash.svg" onClick={decrementQuantity}></img>
               <div className={styles.valpar}>
                 <div className={styles.value}>{quantity}</div>
               </div>
-              <img src='/static/plus.svg' onClick={incrementQuantity}></img>
+              <img src="/static/plus.svg" onClick={incrementQuantity}></img>
             </div>
-            <div className={styles.add_to_cart} onClick={handleAddToCart}>Add to cart</div>
-            <div className={styles.buy_now} onClick={handleBuyNow}>Buy now</div>
+            <div className={styles.add_to_cart} onClick={handleAddToCart}>
+              Add to cart
+            </div>
+            <div className={styles.buy_now} onClick={handleBuyNow}>
+              Buy now
+            </div>
 
             {/* Share button */}
             <div
-              className={`${styles.share} ${hasShared ? styles.disabled : ''}`} // Add disabled class if already shared
+              className={`${styles.share} ${hasShared ? styles.disabled : ""}`}
               onClick={handleShareClick}
-              style={{ pointerEvents: hasShared ? 'none' : 'auto' }} // Disable further clicking
+              style={{ pointerEvents: hasShared ? "none" : "auto" }}
             >
-              <img src='/static/upload.svg' alt='share.svg'></img>
+              <img src="/static/upload.svg" alt="share.svg"></img>
               <div className={styles.miscdesc}>Share</div>
             </div>
 
