@@ -87,7 +87,7 @@ const Search = ({ products }) => {
                           <div className={styles.resultItem} onClick={handleLinkClick}>
                             <div className={styles.handler}>
                               <img
-                                src={product.attributes.image.data[0].attributes.url}
+                                src={process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}
                                 className={styles.productImage}
                               />
                               <div className={styles.resultProductName}>{product.attributes.title}</div>
