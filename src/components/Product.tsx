@@ -96,7 +96,7 @@ const Product: React.FC<ProductProps> = ({ paramId }) => {
         id: product.id,
         title: product.attributes.title,
         price: product.attributes.price,
-        imageUrl: `${process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL}${product.attributes.image.data[0].attributes.url}`, // Add base URL here
+        imageUrl: `${product.attributes.image.data[0].attributes.url}`, // Add base URL here when using strapi variable
         quantity,
       });
       router.push("/checkout"); // Redirect to the checkout page
