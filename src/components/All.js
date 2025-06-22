@@ -105,8 +105,8 @@ const All = ({ STRAPI_APP_BASE_URL }) => {
           {products.map(product => (
             <Link className={styles.card} href={`/products/${product.attributes.slug}`} key={product.id}>
               <div className={styles.card_image}>
-              <img // Remove env variable when using railway
-                src={`${process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL}${product.attributes.image.data[0].attributes.url}`} 
+              <img // Remove env variable when using env variable
+                src={`${product.attributes.image.data[0].attributes.url}`} 
                 alt={product.attributes.title} 
               />
               </div>

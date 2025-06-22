@@ -86,8 +86,9 @@ const Search = ({ products }) => {
                         <Link href={`/products/${product.attributes.slug}`} passHref key={product.id}>
                           <div className={styles.resultItem} onClick={handleLinkClick}>
                             <div className={styles.handler}>
-                              <img
-                                src={process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL + product.attributes.image.data[0].attributes.url}
+                              
+                              <img // Remove env variable when using env variable process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL +
+                                src={product.attributes.image.data[0].attributes.url}
                                 className={styles.productImage}
                               />
                               <div className={styles.resultProductName}>{product.attributes.title}</div>
