@@ -135,8 +135,8 @@ const Product: React.FC<ProductProps> = ({ paramId }) => {
       <div className={styles.flex_container}>
         <div className={styles.product_container}>
           <div className={styles.product}>
-            <img
-              src={`${process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL}${product.attributes.image.data[0].attributes.url}`}
+            <img // Remove env variable when deployed with strapi cloud ${process.env.NEXT_PUBLIC_STRAPI_APP_BASE_URL}
+              src={`${product.attributes.image.data[0].attributes.url}`}
               alt={product.attributes.title}
             />
           </div>
